@@ -1,0 +1,330 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* --- Layout Container --- */
+.main-layout-wrapper {
+    display: flex;
+    flex-direction: column; /* Mobile Default: Ad on Top */
+    gap: 20px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't overflow width */
+}
+
+/* --- Ad Container --- */
+.adsense-container {
+    width: 100%;
+    text-align: center;
+    /* Parent does NOT get sticky. It just holds the space. */
+    flex-shrink: 0; 
+}
+
+/* This wrapper handles the sticking */
+.ad-sticky-wrapper {
+    position: sticky;
+    top: 20px; /* Sticks 20px from top of viewport */
+    height: auto;
+}
+
+.ad-placeholder {
+    background: #ebebeb;
+    border: 1px solid #ddd;
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    width: 100%;
+    max-width: 300px; /* Prevents ad from getting too huge on mobile */
+    margin: 0 auto;
+}
+
+.calculator-content {
+    flex: 1;
+    width: 100%;
+    max-width: 900px;
+    /* Ensure it doesn't shrink below usability before wrapping */
+    min-width: 0; 
+}
+
+/* --- Desktop Layout Switch (>= 720px) --- */
+@media (min-width: 720px) {
+    .main-layout-wrapper {
+        flex-direction: row; 
+        /* align-items: stretch is default.
+           This makes the sidebar as tall as the content, 
+           allowing the sticky wrapper to slide down. */
+        justify-content: center; /* Centers the whole block if screen is huge */
+        max-width: 100%; 
+        gap: 20px; 
+    }
+
+    .adsense-container {
+        /*  Fixed 300px width */
+        width: 300px; 
+        flex: 0 0 300px; 
+        margin-bottom: 0;
+    }
+
+    .ad-placeholder {
+        min-height: 600px; /* Skyscraper height */
+    }
+
+    .calculator-content {
+        /*  Min-width 400px before wrap logic would apply,
+           but since we are in a media query, this ensures sturdiness */
+        min-width: 400px; 
+        margin: 0; 
+    }
+}
+
+/* --- Headings & Global UI --- */
+h3 {
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    color: #0056b3;
+    margin-top: 30px;
+}
+
+h4.pipe-label {
+    margin: 0;
+    color: #0056b3;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Pipe Group Cards --- */
+.pipe-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+    align-items: stretch;
+}
+
+.pipe-group {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 15px;
+    flex: 2; 
+    min-width: 280px; 
+    display: grid;
+    grid-template-columns: max-content 1fr max-content 1fr;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+}
+
+.name-row, .header-row {
+    grid-column: span 4;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Result Column (Strict 130px) --- */
+.result-column {
+    width: 130px; /* FIXED WIDTH */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #eef4ff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    flex-shrink: 0; 
+}
+
+.result-column .label {
+    font-size: 0.75em; 
+    color: #666;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.result-column .value {
+    font-size: 1.2em; 
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* --- Form Elements --- */
+label {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #555;
+}
+
+select, input[type="number"], input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    box-sizing: border-box; /* Prevents padding from blowing out width */
+}
+
+input[type="number"] {
+    width: 100%; /* Let grid control width */
+    max-width: 80px;
+}
+
+.p_od_disp, .f_od_disp {
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1em;
+}
+
+/* --- Buttons --- */
+button {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    transition: all 0.2s;
+}
+
+#addPipeBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 0.8em 1em; 
+    font-size: 1em;
+}
+
+#addPipeBtn:hover {
+    background-color: #218838;
+}
+
+.remove-btn {
+    background-color: transparent;
+    border: 1px solid #dc3545 !important;
+    font-size: 0.8em;
+    color: #dc3545;
+}
+
+.remove-btn:hover {
+    background-color: #dc3545;
+    color: white !important;
+}
+
+/* The main container */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* The magic wrapper that keeps buttons together */
+.button-pair {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    /* This min-width ensures that if the screen is narrower than 
+       roughly two buttons, the whole pair drops to the next line. */
+    min-width: 300px; 
+}
+
+.toolbar-btn {
+    flex: 1; 
+    font-size: 1.1em;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none; 
+    background-color: #28a745;
+    /* Removed individual min-width to let the pair handle logic */
+}
+.toolbar-btn:hover {
+    background-color: #218838;
+}
+
+.btn-persistence {
+    background-color: #6f42c1; 
+}
+.btn-persistence:hover {
+    background-color: #59359a;
+}
+
+.formula-container {
+    background-color: #f8f9fa;
+    border-left: 5px solid #007bff; /* Professional blue accent */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow-x: auto; /* Adds a scrollbar if the formula is too wide for mobile */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formula-label {
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* --- Results Footer --- */
+#gap {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #0056b3;
+    width: 80px;
+}
+
+#totalSpacingDisplay {
+    background: #333;
+    color: #ffffff !important;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+/* Styling for images in the User Guide */
+.calculator-content img {
+    max-width: 100%;    /* Prevents image from being wider than the screen */
+    height: auto;       /* Maintains aspect ratio */
+    display: block;     /* Removes weird bottom gaps */
+    margin: 15px auto;  /* Centers the image and adds space top/bottom */
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
+}

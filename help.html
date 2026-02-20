@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Pipe Spacing Calculator</title>
+    <meta name="description" content="User guide and FAQ for the Advanced Pipe Spacing Calculator, for Piping Engineers. Calculate minimum Center-to-Center distance for multiple parallel pipelines.">
+    <link rel="icon" type="image/png" href="img/favicon/favicon.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" sizes="any"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout-wrapper">
+        <aside class="adsense-container">
+            <div class="ad-sticky-wrapper"> 
+                <div class="ad-placeholder">
+                    <small>Advertisement</small>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="calculator-content">
+            <header>
+                <h3>Advanced Pipe Spacing Calculator</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+                        <h2 style="margin: 0;">User Guide</h2>
+                        <nav>
+                            <a href="index.html" style="text-decoration: none; font-weight: bold; color: #0056b3; margin-right: 15px;">← Back to Calculator</a>
+                        </nav>
+                    </div>
+            </header>
+                 
+            <h3>1. Purpose and Logic</h3>
+            <p>The Advanced Pipe Spacing Calculator, is a tool designed for Engineers involved in the field of Piping Engineering. It calculates the minimum <strong>Center-to-Center (C2C)</strong> distance in mm, required between multiple parallel pipelines, to prevent physical interference and maintain design clearances, as dictated by project specifications and design requirements.</p>
+                
+                
+                
+            <ul>
+                <li><strong>Staggered Flange Assumption:</strong> The calculation logic assumes that flanges on adjacent lines are longitudinally staggered. The C2C is determined by the maximum distance required to clear the <em>Pipe-to-Flange</em> profile of both lines, while taking applied insulation into consideration.</li>
+                <li><strong>Calculation Formula:</strong> For each pipeline pair, the calculator performs two case studies:
+                
+                <div class="formula-container">
+                    <span class="formula-label">Center-to-Center Calc - Case 1:</span>
+                    $$ \text{C2C}_1 = (\text{Rad}_{\text{pipe}_1} + \text{Insul}_{\text{pipe}_1}) + (\text{Rad}_{\text{flange}_2} + \text{Insul}_{\text{flange}_2}) + \text{Gap} $$
+                    
+                    <span class="formula-label">Center-to-Center Calc - Case 2:</span>
+                    $$ \text{C2C}_2 = (\text{Rad}_{\text{pipe}_2} + \text{Insul}_{\text{pipe}_2}) + (\text{Rad}_{\text{flange}_1} + \text{Insul}_{\text{flange}_1}) + \text{Gap} $$
+                    
+                    <span class="formula-label">Final Result:</span>
+                    $$ \text{if } \text{C2C}_1 \ge \text{C2C}_2 \text{ ,then } \text{C2C} = \text{C2C}_1 $$
+                    $$ \text{if } \text{C2C}_1 < \text{C2C}_2 \text{ ,then } \text{C2C} = \text{C2C}_2 $$
+                    
+                </div>
+                
+                
+                the two values are compared and the larger one, indicating the worst-case scenario, is selected and displayed as the Center to Center distance between the pair of the two pipelines. Results are rounded up to the nearest 5mm.</li>
+                <li>
+                    <strong>Pipe and Flange Diameters:</strong> Data are according to 
+                    <i>ASME B36.10M</i>, 
+                    <i>ASME B16.5 (flanges up to NPS 24)</i> and 
+                    <i>ASME B16.47 (Series A & Series B flanges NPS 26 through NPS 60)</i>.
+                </li>
+            </ul>
+                
+            <h2>User Interface</h2>
+            <h3>2. Global Settings</h3>
+                <ul>
+                    <li><strong>Gap (mm):</strong> The minimum required physical clearance between the widest points of adjacent components (insulation or flange).</li>
+                    <li><strong>Calculation Logic:</strong>
+                        <ul>
+                            <li>
+                            <em>Pipe - Flange:</em> Factors in flange diameter for spacing, as well as insulation thickness, if present.
+                            <img src="img/pipe2flange.webp" alt="Pipe to Flange spacing" width="400" height="300">
+                            </li>
+                            <li>
+                            <em>Pipe - Pipe:</em> Flanges are omitted; calculates spacing based strictly on pipe OD and insulation thickness, if present.
+                            <img src="img/pipe2pipe.webp" alt="Pipe to Pipe spacing" width="400" height="300">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            <h3>3. Pipeline Parameters</h3>
+                <ul>
+                    <li><strong>Pipeline Name:</strong> Optional label used in DXF drawing and PDF report.</li>
+                    <li><strong>NPS:</strong> Select nominal pipe size. This automatically assigns the correct Pipe OD from the database.</li>
+                    <li><strong>Class:</strong> Select pressure rating. This automatically assigns the flange OD from the database. Classes <i>Axxx</i> refer to Series A flanges. Classes <i>Bxxx</i> refer to Series B flanges.</li>
+                    <li><strong>Insul / Flg ins (mm):</strong> Enter the thickness of insulation, for pipe and flange, if applicable, in millimeters.</li>
+                    <li><strong>BOP (mm):</strong> Used in DXF drawing and PDF report. All pipelines are drawn on BOP +0 by default. If checked, the pipeline will be elevated for an equal amount of millimeters, in respect to the rest of the pipelines.</li>
+                </ul>
+                
+                
+            <h3>4. Functions</h3>
+                <ul>
+                    <li><strong>Download DXF:</strong> Exports a DXF (version R12, metric, mm) cross-section drawing.  Each entity is on their own layer.</li>
+                    <li><strong>Download PDF:</strong> Exports a report in PDF format, with the current pipeline setup in the page and respective results.</li>
+                    <li><strong>Save Setup:</strong> Saves your current pipe configuration, locally, to a <code>.json</code> file. </li>
+                    <li><strong>Load Setup:</strong> Loads a previously locally saved pipe configuration from a <code>.json</code> file. </li>
+                    <li><strong>+ Add Pipe:</strong> Append a new pipeline to current configuration</li>
+                    <li><strong>Remove:</strong> Delete selected pipeline from current configuration</li>
+               </ul>
+               
+            <h3>5. Abbreviations</h3>
+                <ul>
+                    <li><strong>NPS:</strong> Nominal Pipe Size</li>
+                    <li><strong>OD:</strong> Outside Diameter (for the purposes of this tool, Flange OD describes the largest external diameter of the flange, shown as <i>O</i> in ASME documentation).</li>
+                    <li><strong>Insul, Ins:</strong> Insulation thickness (for the purposes of this webpage)</li>
+                    <li><strong>Flg:</strong> Flange</li>
+                    <li><strong>BOP:</strong> Bottom of Pipe</li>
+                    <li><strong>Rad:</strong> Radius</li>
+                    <li><strong>C2C:</strong> Center to Center distance, in mm</li>
+                </ul>
+           
+                
+           <div style="margin-top: 30px; font-size: 0.8em; color: #666; text-align: center;">
+           <strong>Disclaimer:</strong> This tool is for estimation purposes only. 
+            All dimensions and outputs must be verified by a qualified engineer before design, fabrication or installation. 
+            The author assumes no liability for errors or omissions.
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1040" height="1040"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1040" height="1040"><svg width="1040" height="1040" viewBox="0 0 1040 1040" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 520,520 
+           A 256,256 0 0 1 520,8 
+           A 512,512 0 0 1 520,1032 
+           A 256,256 0 0 0 520,520" fill="blue" stroke="none"></path>
+
+  <path d="M 520,520 
+           A 256,256 0 0 1 520,8 
+           A 512,512 0 0 0 520,1032 
+           A 256,256 0 0 0 520,520" fill="white" stroke="none"></path>
+
+  <circle cx="520" cy="520" r="512" fill="none" stroke="blue" stroke-width="12"></circle>
+  
+  <line x1="8" y1="520" x2="1032" y2="520" stroke="red" stroke-width="12"></line>
+  <line x1="520" y1="8" x2="520" y2="1032" stroke="red" stroke-width="12"></line>
+
+  <path d="M 520,520 A 256,256 0 0 1 520,8" fill="none" stroke="blue" stroke-width="1"></path>
+  <path d="M 520,520 A 256,256 0 0 1 520,1032" fill="none" stroke="blue" stroke-width="1"></path>
+</svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

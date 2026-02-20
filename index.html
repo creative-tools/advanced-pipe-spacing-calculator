@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Pipe Spacing Calculator</title>
+    <meta name="description" content="Advanced Pipe Spacing Calculator for Piping Engineers. Calculate minimum Center-to-Center distance for parallel pipelines.">
+    <link rel="icon" type="image/png" href="img/favicon/favicon.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" sizes="any"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout-wrapper">
+       <aside class="adsense-container">
+            <div class="ad-sticky-wrapper">
+                <div class="ad-placeholder">
+                    <small>Advertisement</small>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="calculator-content">
+            <header>
+                <h3>Advanced Pipe Spacing Calculator</h3>
+                    <div style="text-align: right;">
+                        <nav>
+                        <a href="help.html" style="text-decoration: none; font-weight: bold;">Help</a>
+                        </nav>
+                    </div>
+            </header>
+        
+            <div class="button-group">
+                <div class="button-pair">
+                    <button type="button" class="toolbar-btn" onclick="downloadDXF()">Download DXF</button>
+                    <button type="button" class="toolbar-btn" onclick="downloadPDF()">Download PDF</button>
+                </div>
+                <div class="button-pair">
+                    <button type="button" class="toolbar-btn btn-persistence" onclick="Persistence.exportSession()">Save Setup</button>
+                    <label for="importFile" class="toolbar-btn btn-persistence">Load Setup</label>
+                    <input type="file" id="importFile" style="display:none;" accept=".json" onchange="Persistence.importSession(event)">
+                </div>
+            </div>
+        
+            <h3>Global Settings</h3>
+            <label>Gap (mm):</label> 
+            <input type="number" id="gap" value="25" min="0" step="1">
+            
+            <div style="margin-top: 10px; margin-bottom: 10px;">
+                <label style="font-weight: bold;">Calculation Logic:</label>
+                <label><input type="radio" name="calcMode" value="pf" checked> Pipe - Flange</label>
+                <label><input type="radio" name="calcMode" value="pp"> Pipe - Pipe</label>
+            </div>
+            
+            <h3>Pipeline Data</h3>
+                <div id="pipesContainer">
+                </div>
+                <div style="margin: 20px 0; padding: 10px; border-top: 1px solid #ccc;">
+                    <button type="button" id="addPipeBtn">+ Add Pipe</button>
+                </div>
+                <div id="totalSpacingDisplay">
+                </div>   
+                <div style="margin-top: 30px; font-size: 0.8em; color: #666; text-align: center;">
+                <strong>Disclaimer:</strong> This tool is for estimation purposes only. 
+                All dimensions and outputs must be verified by a qualified engineer before design, fabrication or installation. 
+                The author assumes no liability for errors or omissions.
+                </div>
+                
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+            <script src="js/data.js"></script>
+            <script src="js/persistence.js"></script>
+            <script src="js/dxf.js"></script>
+            <script src="js/pdf.js"></script>
+            <script src="js/calculator.js"></script>
+        </main>
+    </div>
+</body>
+</html>
+
