@@ -328,3 +328,21 @@ button {
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
 }
+
+site-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.site-footer a {
+    font-size: 11px; /* Makes it smaller */
+    color: #999;    /* Light gray to be less prominent */
+    text-decoration: none; /* Removes the underline */
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #555;    /* Slightly darker on hover for usability */
+    text-decoration: underline;
+}
