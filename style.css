@@ -329,10 +329,13 @@ button {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
 }
 
-site-footer {
-    text-align: center;
+.site-footer {
+    width: 100%;           /* Takes up the full width of the container */
+    text-align: center;    /* Centers the text inside that full width */
     margin-top: 40px;
     padding-bottom: 20px;
+    display: block;        /* Ensures it behaves like a full-width block */
+    clear: both;           /* Prevents floating elements from sitting next to it */
 }
 
 .site-footer a {
