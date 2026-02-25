@@ -301,39 +301,39 @@ function downloadPDF() {
     const mode = document.querySelector('input[name="calcMode"]:checked').value;
     const totalText = document.getElementById("totalSpacingDisplay").innerText;
 
-    let pipeConfigs = [];
+    // --- 1. STRICT PRE-VALIDATION (Matches DXF) ---
+    for (let i = 0; i < groups.length; i++) {
+        const size = groups[i].querySelector(".p_size").value;
+        const cls = groups[i].querySelector(".p_class").value;
+        
+        // If the combination doesn't exist in data.js
+        if (!FLANGE_RATINGS[cls] || FLANGE_RATINGS[cls][size] === undefined) {
+            alert(`EXPORT FAILED\n\nData missing for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease select a valid Flange Class or Size.`);
+            return; // Kill the function immediately
+        }
+    }
 
-    // Loop through all pipes
+    // --- 2. DATA COLLECTION (Only runs if data is 100% valid) ---
+    let pipeConfigs = [];
     for (let i = 0; i < groups.length; i++) {
         const g = groups[i];
         const size = g.querySelector(".p_size").value;
         const cls = g.querySelector(".p_class").value;
         
         const p_od = PIPE_DATA["NPS"][size];
-        const f_od = FLANGE_RATINGS[cls] ? FLANGE_RATINGS[cls][size] : undefined;
-
-        // Guard Clause
-        if (f_od === undefined) {
-            alert(`EXPORT FAILED\n\nData missing for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease select a valid Flange Class or Size.`);
-            return;
-        }
-
+        const f_od = FLANGE_RATINGS[cls][size]; 
         const p_ins = parseInt(g.querySelector(".p_ins").value) || 0;
         const f_ins = parseInt(g.querySelector(".f_ins").value) || 0;
         const isBopEnabled = g.querySelector(".bop_check").checked;
         const bopVal = isBopEnabled ? (parseInt(g.querySelector(".bop_val").value) || 0) : 0;
 
-        // --- Calculate "Forward" C2C (Distance to Next Pipe) ---
         let nextC2C = null;
-        
-        // If there is a next pipe, calculate distance to it
         if (i < groups.length - 1) {
             const nextG = groups[i+1];
             const p2_size = nextG.querySelector(".p_size").value;
             const p2_cls = nextG.querySelector(".p_class").value;
-            
             const p2_od = PIPE_DATA["NPS"][p2_size];
-            const f2_od = FLANGE_RATINGS[p2_cls][p2_size]; // We know this is safe if guard clause passes later, but for now we trust logic
+            const f2_od = FLANGE_RATINGS[p2_cls][p2_size]; 
             const p2_ins = parseInt(nextG.querySelector(".p_ins").value) || 0;
             const f2_ins = parseInt(nextG.querySelector(".f_ins").value) || 0;
 
@@ -341,7 +341,6 @@ function downloadPDF() {
                 const raw = (p_od / 2) + p_ins + (p2_od / 2) + p2_ins + gap;
                 nextC2C = Math.ceil(raw / 5) * 5;
             } else {
-                // Current Pipe is 1, Next Pipe is 2
                 nextC2C = calculateC2C(p_od, p_ins, f_od, f_ins, p2_od, p2_ins, f2_od, f2_ins, gap);
             }
         }
@@ -355,10 +354,11 @@ function downloadPDF() {
             p_ins: p_ins,
             f_ins: f_ins,
             bop: bopVal,
-            nextC2C: nextC2C // Store the forward distance
+            nextC2C: nextC2C 
         });
     }
 
+    // --- 3. TRIGGER PDF GENERATOR ---
     PDFGenerator.generate(pipeConfigs, {
         gap: gap,
         mode: mode,
