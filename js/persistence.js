@@ -79,6 +79,7 @@ const Persistence = {
                     bopCheck.checked = p.bop_enabled;
                     bopInput.value = p.bop_val;
                     bopInput.disabled = !p.bop_enabled;
+                    lastRow.querySelector(".p_size").dispatchEvent(new Event("change"));
                 });
 
                 // 4. Refresh Calculations
