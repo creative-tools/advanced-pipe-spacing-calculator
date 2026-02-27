@@ -141,8 +141,8 @@ function updateResult() {
         const p2_ins = parseInt(nextRow.querySelector(".p_ins").value) || 0;
         const f2_ins = parseInt(nextRow.querySelector(".f_ins").value) || 0;
 
-        // Safety Check: Validate flange data existence for 'pipe-flange' mode
-        if (mode === 'pf' && (f1_od === undefined || f2_od === undefined)) {
+       // Safety Check: Validate flange data existence ALWAYS
+        if (f1_od === undefined || f2_od === undefined) {
             resCol.innerHTML = `
                 <span class="label">Center to Center</span>
                 <div class="value" style="color: #dc3545; font-size: 1em;">Invalid Size-Class</div>
@@ -301,17 +301,16 @@ function downloadPDF() {
     const mode = document.querySelector('input[name="calcMode"]:checked').value;
     const totalText = document.getElementById("totalSpacingDisplay").innerText;
 
-    // --- 1. PRE-VALIDATION GUARD CLAUSE ---
-    // Check all pipes first to ensure we don't crash later
+   // --- 1. STRICT PRE-VALIDATION ---
     for (let i = 0; i < groups.length; i++) {
         const size = groups[i].querySelector(".p_size").value;
         const cls = groups[i].querySelector(".p_class").value;
         const f_od = FLANGE_RATINGS[cls] ? FLANGE_RATINGS[cls][size] : undefined;
 
-        // Only block the export if we are in Pipe-Flange mode AND data is missing
-        if (mode === 'pf' && f_od === undefined) {
-            alert(`EXPORT FAILED\n\nData missing for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease select a valid Flange Class or Size.`);
-            return; // STOP execution here safely
+        // Block export for ANY invalid data selection regardless of mode
+        if (f_od === undefined) {
+            alert(`EXPORT FAILED\n\nInvalid Selection for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease correct the Size-Class pair before exporting.`);
+            return; 
         }
     }
 
