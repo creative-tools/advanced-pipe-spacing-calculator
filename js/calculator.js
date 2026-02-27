@@ -309,7 +309,7 @@ function downloadPDF() {
 
         // Block export for ANY invalid data selection regardless of mode
         if (f_od === undefined) {
-            alert(`EXPORT FAILED\n\nInvalid Selection for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease correct the Size-Class pair before exporting.`);
+            alert(`EXPORT FAILED\n\nData missing for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease select a valid Flange Class or Size.`);
             return; 
         }
     }
