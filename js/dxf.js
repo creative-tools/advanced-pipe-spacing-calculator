@@ -86,7 +86,8 @@ const DXFWriter = {
             }
 
             // Centerline using fixedTopY
-            dxf += this._line(currentX, centerY, currentX, fixedTopY, "CENTERLINE");
+            //dxf += this._line(currentX, centerY, currentX, fixedTopY, "CENTERLINE");
+             dxf += this._line(currentX, centerY + (p.p_od / 2), currentX, fixedTopY, "CENTERLINE");
              dxf += this._line(currentX - (p.p_od / 2), centerY, currentX + (p.p_od / 2), centerY, "CENTERLINE");
              dxf += this._line(currentX, centerY - (p.p_od / 2), currentX, centerY + (p.p_od / 2), "CENTERLINE");
 
