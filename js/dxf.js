@@ -116,7 +116,7 @@ const DXFWriter = {
 
     _text(x, y, val, rot, layer) {
         // R12 Text: 10,20=pos, 40=height, 1=value, 50=rotation
-        return `0\nTEXT\n8\n${layer}\n10\n${x.toFixed(3)}\n20\n${y.toFixed(3)}\n30\n0.0\n40\n25.0\n1\n${val}\n50\n${rot}\n`;
+        return `0\nTEXT\n8\n${layer}\n10\n${x.toFixed(3)}\n20\n${y.toFixed(3)}\n30\n0.0\n40\n30.0\n1\n${val}\n50\n${rot}\n`;
     },
     
 
