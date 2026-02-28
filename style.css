@@ -55,6 +55,35 @@ body {
     min-width: 0; 
 }
 
+.main-title {
+    color: #003366; /* Distinct, darker blue */
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* --- Intro Description Block --- */
+.intro-description {
+    background-color: #ffffff;
+    border-left: 4px solid #6c757d; /* Visual accent line */
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 25px; /* Creates breathing room before buttons */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    color: #495057;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.intro-description p {
+    margin: 0 0 10px 0;
+}
+
+.intro-description p:last-child {
+    margin-bottom: 0;
+}
+
 /* --- Desktop Layout Switch (>= 720px) --- */
 @media (min-width: 720px) {
     .main-layout-wrapper {
