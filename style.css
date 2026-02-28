@@ -94,6 +94,19 @@ body {
     }
 }
 
+/* --- App Header & Main Title --- */
+.app-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+    margin-top: 10px;
+    gap: 15px;
+}
+
 .main-title {
     color: #003366; /* Distinct, darker blue */
     font-size: 1.8em;
@@ -102,17 +115,20 @@ body {
     letter-spacing: -0.5px;
 }
 
-/* --- Intro Description Block --- */
-.intro-description {
-    background-color: #ffffff;
-    border-left: 4px solid #6c757d; /* Visual accent line */
+.help-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0056b3;
+    background-color: #eef4ff;
+    padding: 8px 16px;
     border-radius: 4px;
-    padding: 15px 20px;
-    margin-bottom: 25px; /* Creates breathing room before buttons */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    color: #495057;
-    font-size: 0.95em;
-    line-height: 1.6;
+    border: 1px solid #cce0ff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.help-link:hover {
+    background-color: #0056b3;
+    color: white;
 }
 
 
