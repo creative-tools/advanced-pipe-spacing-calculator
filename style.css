@@ -55,14 +55,6 @@ body {
     min-width: 0; 
 }
 
-.intro-description p {
-    margin: 0 0 10px 0;
-}
-
-.intro-description p:last-child {
-    margin-bottom: 0;
-}
-
 /* --- Desktop Layout Switch (>= 720px) --- */
 @media (min-width: 720px) {
     .main-layout-wrapper {
@@ -93,45 +85,6 @@ body {
         margin: 0; 
     }
 }
-
-/* --- App Header & Main Title --- */
-.app-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #e9ecef;
-    margin-top: 10px;
-    gap: 15px;
-}
-
-.main-title {
-    color: #003366; /* Distinct, darker blue */
-    font-size: 1.8em;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.help-link {
-    text-decoration: none;
-    font-weight: bold;
-    color: #0056b3;
-    background-color: #eef4ff;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: 1px solid #cce0ff;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.help-link:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-
 
 /* --- Headings & Global UI --- */
 h3 {
