@@ -157,6 +157,18 @@ h3 {
     margin-top: 30px;
 }
 
+/* --- Major Section Titles --- */
+.section-title {
+    color: #063B7A; 
+    font-size: 1.3em;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
 h4.pipe-label {
     margin: 0;
     color: #0056b3;
