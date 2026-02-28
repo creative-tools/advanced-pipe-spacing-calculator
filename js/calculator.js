@@ -182,7 +182,7 @@ function updateResult() {
         // Formula: Sum of C2C + Radius1 + Insul1 + RadiusN + InsulN
         const totalSpacing = sumC2C + (firstOD / 2) + firstIns + (lastOD / 2) + lastIns;
         
-        totalEl.innerHTML = `Total Required Spacing (Incl. Insul): ${totalSpacing.toFixed(1)} mm`;
+        totalEl.innerHTML = `Total required space (incl. Insul): ${totalSpacing.toFixed(1)} mm`;
     } else {
         totalEl.innerHTML = hasError ? "Check Pipe Data" : "";
     }}
