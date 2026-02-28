@@ -86,6 +86,27 @@ body {
     }
 }
 
+/* --- Intro Description Block --- */
+.intro-description {
+    background-color: #ffffff;
+    border-left: 4px solid #6c757d; /* Visual accent line */
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 25px; /* Creates breathing room before buttons */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    color: #495057;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.intro-description p {
+    margin: 0 0 10px 0;
+}
+
+.intro-description p:last-child {
+    margin-bottom: 0;
+}
+
 /* --- Headings & Global UI --- */
 h3 {
     border-bottom: 2px solid #0056b3;
