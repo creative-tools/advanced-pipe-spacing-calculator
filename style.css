@@ -229,7 +229,8 @@ h4.pipe-label {
     padding: 10px;
     text-align: center;
     border-radius: 4px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
+    border-left: 1px solid #d0e0ff;
 }
 
 .result-column .label {
