@@ -86,6 +86,14 @@ body {
     }
 }
 
+.main-title {
+    color: #063B7A; 
+    font-size: 1.6em;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
 /* --- Intro Description Block --- */
 .intro-description {
     background-color: #ffffff;
