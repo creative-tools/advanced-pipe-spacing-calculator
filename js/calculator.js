@@ -37,13 +37,13 @@ function createPipeUI() {
             <label>Flg OD:</label>
             <span class="f_od_disp"></span>
             
-            <label>Insul (mm):</label> 
+            <label>Insul<br>(mm):</label> 
             <input type="number" class="p_ins" value="0" min="0">
             
             <label>Flg Ins<br>(mm):</label> 
             <input type="number" class="f_ins" value="0" min="0">
             
-            <label>BOP (mm):</label>
+            <label>BOP<br>(mm):</label>
             <div style="display: flex; gap: 5px; align-items: center;">
                 <input type="checkbox" class="bop_check" title="Enable Custom BOP">
                 <input type="number" class="bop_val" value="0" step="1" disabled style="width: 100%;">
