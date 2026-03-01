@@ -40,7 +40,7 @@ function createPipeUI() {
             <label>Insul (mm):</label> 
             <input type="number" class="p_ins" value="0" min="0">
             
-            <label>Flg Ins (mm):</label> 
+            <label>Flg Ins\n(mm):</label> 
             <input type="number" class="f_ins" value="0" min="0">
             
             <label>BOP (mm):</label>
