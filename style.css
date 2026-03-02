@@ -430,7 +430,8 @@ button {
 }
 
 .site-footer a {
-    font-size: 0.8em; 
+    font-size: 0.8em;
+    text-align: center;
     color: #999;    
     text-decoration: underline; 
     transition: color 0.3s ease;
