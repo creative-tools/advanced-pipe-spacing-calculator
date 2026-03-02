@@ -67,6 +67,7 @@ function createPipeUI() {
     };
 
     fill(sizeSelect, pipeSizes, true);
+    sizeSelect.value = "6";
     fill(classSelect, flangeClasses, false);
 
     const updateInfo = () => {
