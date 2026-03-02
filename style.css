@@ -427,7 +427,7 @@ button {
 }
 
 .site-footer a {
-    font-size: 0.8em; /* Makes it smaller */
+    font-size: 0.6em; /* Makes it smaller */
     color: #999;    /* Light gray to be less prominent */
     text-decoration: none; /* Removes the underline */
     transition: color 0.3s ease;
