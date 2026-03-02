@@ -436,24 +436,53 @@ button {
     margin-top: -5px; /* Pulls the caption slightly closer to the image */
     font-size: 0.9em; /* Optional: makes the caption slightly smaller */
 }
-
+/*
 .site-footer {
-    width: 100%;           /* Takes up the full width of the container */
-    text-align: center;    /* Centers the text inside that full width */
+    width: 100%;           
+    text-align: center;    
     margin-top: 40px;
     padding-bottom: 20px;
-    display: block;        /* Ensures it behaves like a full-width block */
-    clear: both;           /* Prevents floating elements from sitting next to it */
+    display: block;       
+    clear: both;          
 }
 
 .site-footer a {
-    font-size: 0.8em; /* Makes it smaller */
-    color: #999;    /* Light gray to be less prominent */
-    text-decoration: none; /* Removes the underline */
+    font-size: 0.8em; 
+    color: #999;    
+    text-decoration: none; 
     transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-    color: #555;    /* Slightly darker on hover for usability */
+    color: #555;    
+    text-decoration: underline;
+}  */
+
+
+/* --- Footer Section --- */
+.footer-disclaimer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 10px; 
+}
+
+.site-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.site-footer a {
+    font-size: 0.8em;
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #555;
     text-decoration: underline;
 }
