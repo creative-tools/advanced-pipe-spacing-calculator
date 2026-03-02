@@ -417,6 +417,14 @@ button {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
 }
 
+.calculator-content figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    margin-top: -5px; /* Pulls the caption slightly closer to the image */
+    font-size: 0.9em; /* Optional: makes the caption slightly smaller */
+}
+
 .site-footer {
     width: 100%;           /* Takes up the full width of the container */
     text-align: center;    /* Centers the text inside that full width */
