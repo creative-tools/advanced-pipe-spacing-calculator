@@ -377,24 +377,24 @@ button {
 }*/ 
 
 .formula-container {
-    background-color: #ffffff; /* Clean white background */
-    border: 1px solid #e1e4e8; /* Soft, continuous border instead of the heavy blue line */
-    border-radius: 8px; /* Slightly softer corners */
+    background-color: #ffffff; 
+    border: 1px solid #e1e4e8; 
+    border-radius: 8px; 
     padding: 25px;
     margin: 25px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Deeper but softer shadow for an elegant float effect */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
     overflow-x: auto;
 }
 
 .formula-label {
-    font-family: 'Georgia', serif; /* Switches to a classic, academic serif font */
-    font-style: italic; /* Softens the tone */
-    font-weight: normal; /* Removes the heavy bolding */
-    color: #6c757d; /* A sophisticated slate gray */
+    font-family: 'Georgia', 'Times New Roman', Times, serif; 
+    font-style: italic; 
+    font-weight: normal; 
+    color: #6c757d; 
     margin-bottom: 15px;
-    display: inline-block; /* Allows the delicate bottom border to hug the text */
+    display: inline-block; 
     font-size: 1rem;
-    border-bottom: 1px solid #e1e4e8; /* Delicate underline instead of screaming uppercase */
+    border-bottom: 1px solid #e1e4e8; 
     padding-bottom: 4px;
 }
 
