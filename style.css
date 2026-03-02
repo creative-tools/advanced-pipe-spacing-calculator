@@ -355,15 +355,15 @@ button {
     background-color: #59359a;
 }
 
-.formula-container {
+/*.formula-container {
     background-color: #f8f9fa;
     border-left: 5px solid #007bff; /* Professional blue accent */
-    padding: 20px;
+/*  padding: 20px;
     margin: 20px 0;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     overflow-x: auto; /* Adds a scrollbar if the formula is too wide for mobile */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ /*   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .formula-label {
@@ -374,6 +374,28 @@ button {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+}*/ 
+
+.formula-container {
+    background-color: #ffffff; /* Clean white background */
+    border: 1px solid #e1e4e8; /* Soft, continuous border instead of the heavy blue line */
+    border-radius: 8px; /* Slightly softer corners */
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Deeper but softer shadow for an elegant float effect */
+    overflow-x: auto;
+}
+
+.formula-label {
+    font-family: 'Georgia', serif; /* Switches to a classic, academic serif font */
+    font-style: italic; /* Softens the tone */
+    font-weight: normal; /* Removes the heavy bolding */
+    color: #6c757d; /* A sophisticated slate gray */
+    margin-bottom: 15px;
+    display: inline-block; /* Allows the delicate bottom border to hug the text */
+    font-size: 1rem;
+    border-bottom: 1px solid #e1e4e8; /* Delicate underline instead of screaming uppercase */
+    padding-bottom: 4px;
 }
 
 
@@ -384,16 +406,6 @@ button {
     color: #0056b3;
     width: 80px;
 }
-
-/*#totalSpacingDisplay {
-    background: #333;
-    color: #ffffff !important;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 20px;
-}*/
 
 #totalSpacingDisplay {
     background: #063B7A; /* Deep Navy to match your title */
@@ -420,7 +432,7 @@ button {
 .calculator-content figcaption {
     text-align: center;
     font-style: italic;
-    color: #999;
+    color: #555;
     margin-top: -5px; /* Pulls the caption slightly closer to the image */
     font-size: 0.9em; /* Optional: makes the caption slightly smaller */
 }
