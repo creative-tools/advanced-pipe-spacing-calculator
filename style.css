@@ -418,9 +418,12 @@ button {
 }
 
 .site-footer {
-    width: 100%;           /* Takes up the full width of the container */
-    text-align: center;    /* Centers the text inside that full width */
-    margin-top: 40px;
+    width: 100%;           /* ok
+    text-align: center;    /* ok
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #666;
+    border-top: 1px solid #ccc;
     padding-bottom: 20px;
     display: block;        /* Ensures it behaves like a full-width block */
     clear: both;           /* Prevents floating elements from sitting next to it */
@@ -429,7 +432,7 @@ button {
 .site-footer a {
     font-size: 0.8em; 
     color: #999;    
-    text-decoration: none; 
+    text-decoration: underline; 
     transition: color 0.3s ease;
 }
 
