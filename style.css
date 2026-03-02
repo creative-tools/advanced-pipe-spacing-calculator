@@ -460,13 +460,18 @@ button {
 
 
 /* --- Footer Section --- */
-.footer-disclaimer {
+
+.footer-text-block {
     margin-top: 30px;
     font-size: 0.8em;
     color: #666;
     text-align: center;
+}
+
+/* This adds the border only where needed */
+.footer-border-top {
     border-top: 1px solid #ccc;
-    padding-top: 10px; 
+    padding-top: 10px;
 }
 
 .site-footer {
