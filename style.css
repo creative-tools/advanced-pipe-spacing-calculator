@@ -427,13 +427,13 @@ button {
 }
 
 .site-footer a {
-    font-size: 14px; /* Makes it smaller */
-    color: #999;    /* Light gray to be less prominent */
-    text-decoration: none; /* Removes the underline */
+    font-size: 0.8em; 
+    color: #999;    
+    text-decoration: none; 
     transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-    color: #555;    /* Slightly darker on hover for usability */
+    color: #555;    
     text-decoration: underline;
 }
