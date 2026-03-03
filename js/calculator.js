@@ -9,7 +9,7 @@ function calculateC2C(p1_diam, p1_ins, f1_diam, f1_ins, p2_diam, p2_ins, f2_diam
 /**
  * Creates a new pipe input row and adds it to the DOM
  */
-function createPipeUI() {
+function createPipeUI(insertAfterRow = null) {
     const container = document.getElementById("pipesContainer");
     const row = document.createElement("div"); // Variable is named 'row'
     row.className = "pipe-row";
@@ -45,13 +45,20 @@ function createPipeUI() {
             
             <label>BOP<br>(mm):</label>
             <div style="display: flex; gap: 5px; align-items: center;">
-                <input type="checkbox" class="bop_check" title="Enable Custom BOP">
-                <input type="number" class="bop_val" value="0" step="1" disabled style="width: 100%;">
+                <input type="number" class="bop_val" value="0" step="1" style="width: 100%;">
+            </div>
+            
+            <div class="footer-row">
+                <button type="button" class="add-pipe-btn">+ Add Pipe</button>
             </div>
 
         </div>
         <div class="result-column"></div>    `;
-    container.appendChild(row);
+    if (insertAfterRow) {
+        insertAfterRow.after(row);
+    } else {
+        container.appendChild(row);
+    }
 
     const pipeSizes = Object.keys(PIPE_DATA["NPS"]).sort((a, b) => parseFloat(a) - parseFloat(b));
     const flangeClasses = Object.keys(FLANGE_RATINGS);
@@ -87,15 +94,6 @@ function createPipeUI() {
         el.addEventListener("keyup", updateResult);
     });
     
-    // BOP Checkbox Logic
-    const bopCheck = row.querySelector(".bop_check");
-    const bopInput = row.querySelector(".bop_val");
-    
-    bopCheck.addEventListener("change", () => {
-        bopInput.disabled = !bopCheck.checked;
-        if (!bopCheck.checked) bopInput.value = 0; // Optional: Reset to 0 if unchecked
-        updateResult();
-    });
 
     row.querySelector(".remove-btn").addEventListener("click", () => {
         if (document.querySelectorAll(".pipe-row").length > 2) {
@@ -104,6 +102,11 @@ function createPipeUI() {
         } else {
             alert("Minimum of 2 pipes required.");
         }
+    });
+    
+    row.querySelector(".add-pipe-btn").addEventListener("click", () => {
+        createPipeUI(row);
+        updateResult();
     });
 
     updateInfo();
@@ -142,7 +145,7 @@ function updateResult() {
         const p2_ins = parseInt(nextRow.querySelector(".p_ins").value) || 0;
         const f2_ins = parseInt(nextRow.querySelector(".f_ins").value) || 0;
 
-       // Safety Check: Validate flange data existence ALWAYS
+       // Safety Check: Validate flange data existence
         if (f1_od === undefined || f2_od === undefined) {
             resCol.innerHTML = `
                 <span class="label">Center to Center</span>
@@ -176,7 +179,7 @@ function updateResult() {
         const firstOD = PIPE_DATA["NPS"][firstSize] || 0;
         const lastOD = PIPE_DATA["NPS"][lastSize] || 0;
         
-        // Get pipe insulation (not flange) for the first and last rows
+        // Get pipe insulation for the first and last rows
         const firstIns = parseInt(rows[0].querySelector(".p_ins").value) || 0;
         const lastIns = parseInt(rows[rows.length - 1].querySelector(".p_ins").value) || 0;
 
@@ -189,21 +192,17 @@ function updateResult() {
     }}
 /* INITIALIZATION */
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Setup the Add button
-    document.getElementById("addPipeBtn").onclick = () => {
-        createPipeUI();
-        updateResult();
-    };
     
-    // 2. Listeners for Settings
+    
+    // Listeners for Settings
     document.getElementById("gap").oninput = updateResult;
     
-    // NEW: Listener for Radio Buttons
+    // Listener for Radio Buttons
     document.querySelectorAll('input[name="calcMode"]').forEach(radio => {
         radio.addEventListener("change", updateResult);
     });
 
-    // 3. Clear container and start with 2 pipes
+    // Clear container and start with 2 pipes
     const container = document.getElementById("pipesContainer");
     container.innerHTML = ""; 
     
@@ -227,7 +226,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const size = groups[i].querySelector(".p_size").value;
         const cls = groups[i].querySelector(".p_class").value;
         
-        // Check if Flange Data exists in our FLANGE_RATINGS object
+        // Check if Flange Data exists in FLANGE_RATINGS object
         const f_od = FLANGE_RATINGS[cls] ? FLANGE_RATINGS[cls][size] : undefined;
 
         if (f_od === undefined) {
@@ -265,8 +264,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         // Calculate BOP
-        const isBopEnabled = g.querySelector(".bop_check").checked;
-        const bopVal = isBopEnabled ? (parseInt(g.querySelector(".bop_val").value) || 0) : 0;
+        const bopVal = parseInt(g.querySelector(".bop_val").value) || 0;
 
         pipeConfigs.push({
             name: g.querySelector(".p_name").value || "Name",
@@ -275,7 +273,7 @@ window.addEventListener('DOMContentLoaded', () => {
             p_ins: parseInt(g.querySelector(".p_ins").value) || 0,
             f_ins: parseInt(g.querySelector(".f_ins").value) || 0,
             c2c_to_prev: c2c_to_prev,
-            bop: bopVal // New Field
+            bop: bopVal
         });
 });
 
@@ -308,7 +306,7 @@ function downloadPDF() {
         const cls = groups[i].querySelector(".p_class").value;
         const f_od = FLANGE_RATINGS[cls] ? FLANGE_RATINGS[cls][size] : undefined;
 
-        // Block export for ANY invalid data selection regardless of mode
+        // Block export for ANY invalid data selection
         if (f_od === undefined) {
             alert(`EXPORT FAILED\n\nData missing for Pipe ${i + 1}: [NPS: ${size} - Class: ${cls}]\n\nPlease select a valid Flange Class or Size.`);
             return; 
@@ -328,8 +326,7 @@ function downloadPDF() {
 
         const p_ins = parseInt(g.querySelector(".p_ins").value) || 0;
         const f_ins = parseInt(g.querySelector(".f_ins").value) || 0;
-        const isBopEnabled = g.querySelector(".bop_check").checked;
-        const bopVal = isBopEnabled ? (parseInt(g.querySelector(".bop_val").value) || 0) : 0;
+        const bopVal = parseInt(g.querySelector(".bop_val").value) || 0;
 
         // Calculate "Forward" C2C (Distance to Next Pipe)
         let nextC2C = null;
@@ -340,7 +337,7 @@ function downloadPDF() {
             const p2_cls = nextG.querySelector(".p_class").value;
             
             const p2_od = PIPE_DATA["NPS"][p2_size];
-            // Safely retrieve next flange OD
+            // retrieve next flange OD
             const f2_od = FLANGE_RATINGS[p2_cls] ? FLANGE_RATINGS[p2_cls][p2_size] : undefined; 
             
             const p2_ins = parseInt(nextG.querySelector(".p_ins").value) || 0;
@@ -363,7 +360,7 @@ function downloadPDF() {
             p_ins: p_ins,
             f_ins: f_ins,
             bop: bopVal,
-            nextC2C: nextC2C // Store the forward distance
+            nextC2C: nextC2C
         });
     }
 

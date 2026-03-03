@@ -11,25 +11,24 @@ body {
 /* --- Layout Container --- */
 .main-layout-wrapper {
     display: flex;
-    flex-direction: column; /* Mobile Default: Ad on Top */
+    flex-direction: column;
     gap: 20px;
     padding: 15px;
     width: 100%;
-    box-sizing: border-box; /* Ensures padding doesn't overflow width */
+    box-sizing: border-box;
 }
 
 /* --- Ad Container --- */
 .adsense-container {
     width: 100%;
     text-align: center;
-    /* Parent does NOT get sticky. It just holds the space. */
     flex-shrink: 0; 
 }
 
 /* This wrapper handles the sticking */
 .ad-sticky-wrapper {
     position: sticky;
-    top: 20px; /* Sticks 20px from top of viewport */
+    top: 20px; 
     height: auto;
 }
 
@@ -43,7 +42,7 @@ body {
     justify-content: center;
     color: #666;
     width: 100%;
-    max-width: 300px; /* Prevents ad from getting too huge on mobile */
+    max-width: 300px; 
     margin: 0 auto;
 }
 
@@ -51,7 +50,6 @@ body {
     flex: 1;
     width: 100%;
     max-width: 900px;
-    /* Ensure it doesn't shrink below usability before wrapping */
     min-width: 0; 
 }
 
@@ -59,28 +57,22 @@ body {
 @media (min-width: 720px) {
     .main-layout-wrapper {
         flex-direction: row; 
-        /* align-items: stretch is default.
-           This makes the sidebar as tall as the content, 
-           allowing the sticky wrapper to slide down. */
-        justify-content: center; /* Centers the whole block if screen is huge */
+        justify-content: center;
         max-width: 100%; 
         gap: 20px; 
     }
 
     .adsense-container {
-        /*  Fixed 300px width */
         width: 300px; 
         flex: 0 0 300px; 
         margin-bottom: 0;
     }
 
     .ad-placeholder {
-        min-height: 600px; /* Skyscraper height */
+        min-height: 600px;
     }
 
     .calculator-content {
-        /*  Min-width 400px before wrap logic would apply,
-           but since we are in a media query, this ensures sturdiness */
         min-width: 400px; 
         margin: 0; 
     }
@@ -98,8 +90,8 @@ body {
 .page-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Bottom-aligns the title and the nav link */
-    border-bottom: 3px solid #0056b3; /* A thicker, professional blue accent line */
+    align-items: flex-end; 
+    border-bottom: 3px solid #0056b3; 
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
@@ -108,7 +100,7 @@ body {
     margin: 0;
 }
 
-/* Optional: A class for your header navigation links */
+/* Optional: A class for header navigation links */
 .header-nav {
     text-decoration: none;
     font-weight: bold;
@@ -131,10 +123,10 @@ body {
 /* --- Intro Description Block --- */
 .intro-description {
     background-color: #ffffff;
-    border-left: 4px solid #6c757d; /* Visual accent line */
+    border-left: 4px solid #6c757d; 
     border-radius: 4px;
     padding: 15px 20px;
-    margin-bottom: 25px; /* Creates breathing room before buttons */
+    margin-bottom: 25px; 
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     color: #495057;
     font-size: 0.95em;
@@ -200,7 +192,7 @@ h4.pipe-label {
     border: 1px solid #ddd;
 }
 
-.name-row, .header-row {
+.name-row, .header-row, .footer-row {
     grid-column: span 4;
 }
 
@@ -221,7 +213,7 @@ h4.pipe-label {
 
 /* --- Result Column (Strict 130px) --- */
 .result-column {
-    width: 130px; /* FIXED WIDTH */
+    width: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -259,11 +251,11 @@ select, input[type="number"], input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.9em;
-    box-sizing: border-box; /* Prevents padding from blowing out width */
+    box-sizing: border-box; 
 }
 
 input[type="number"] {
-    width: 100%; /* Let grid control width */
+    width: 100%; 
     max-width: 80px;
 }
 
@@ -286,15 +278,23 @@ button {
     transition: all 0.2s;
 }
 
-#addPipeBtn {
+.add-pipe-btn {
     background-color: #28a745;
     color: white;
-    padding: 0.8em 1em; 
-    font-size: 1em;
+    padding: 0.8em 1em;
+    font-size: 0.8em;
 }
 
-#addPipeBtn:hover {
+.add-pipe-btn:hover {
     background-color: #218838;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .remove-btn {
@@ -317,13 +317,10 @@ button {
     margin-top: 20px;
 }
 
-/* The magic wrapper that keeps buttons together */
 .button-pair {
     display: flex;
     flex: 1;
     gap: 10px;
-    /* This min-width ensures that if the screen is narrower than 
-       roughly two buttons, the whole pair drops to the next line. */
     min-width: 300px; 
 }
 
@@ -342,8 +339,8 @@ button {
     text-align: center;
     text-decoration: none; 
     background-color: #28a745;
-    /* Removed individual min-width to let the pair handle logic */
 }
+
 .toolbar-btn:hover {
     background-color: #218838;
 }
@@ -354,28 +351,7 @@ button {
 .btn-persistence:hover {
     background-color: #59359a;
 }
-
-/*.formula-container {
-    background-color: #f8f9fa;
-    border-left: 5px solid #007bff; /* Professional blue accent */
-/*  padding: 20px;
-    margin: 20px 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    overflow-x: auto; /* Adds a scrollbar if the formula is too wide for mobile */
- /*   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.formula-label {
-    font-weight: bold;
-    color: #495057;
-    margin-bottom: 10px;
-    display: block;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}*/ 
-
+ 
 .formula-container {
     background-color: #ffffff; 
     border: 1px solid #e1e4e8; 
@@ -408,8 +384,8 @@ button {
 }
 
 #totalSpacingDisplay {
-    background: #063B7A; /* Deep Navy to match your title */
-    border-left: 5px solid #28a745; /* Green accent to signal 'Final Result' */
+    background: #063B7A; 
+    border-left: 5px solid #28a745; 
     color: #ffffff;
     font-weight: 700;
     font-size: 1.1em;
@@ -420,10 +396,10 @@ button {
 
 /* Styling for images in the User Guide */
 .calculator-content img {
-    max-width: 100%;    /* Prevents image from being wider than the screen */
-    height: auto;       /* Maintains aspect ratio */
-    display: block;     /* Removes weird bottom gaps */
-    margin: 15px auto;  /* Centers the image and adds space top/bottom */
+    max-width: 100%;    
+    height: auto;       
+    display: block;     
+    margin: 15px auto;  
     border: 1px solid #ddd; 
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
@@ -433,31 +409,9 @@ button {
     text-align: center;
     font-style: italic;
     color: #555;
-    margin-top: -5px; /* Pulls the caption slightly closer to the image */
-    font-size: 0.9em; /* Optional: makes the caption slightly smaller */
+    margin-top: -5px; 
+    font-size: 0.9em; 
 }
-/*
-.site-footer {
-    width: 100%;           
-    text-align: center;    
-    margin-top: 40px;
-    padding-bottom: 20px;
-    display: block;       
-    clear: both;          
-}
-
-.site-footer a {
-    font-size: 0.8em; 
-    color: #999;    
-    text-decoration: none; 
-    transition: color 0.3s ease;
-}
-
-.site-footer a:hover {
-    color: #555;    
-    text-decoration: underline;
-}  */
-
 
 /* --- Footer Section --- */
 
@@ -468,7 +422,6 @@ button {
     text-align: center;
 }
 
-/* This adds the border only where needed */
 .footer-border-top {
     border-top: 1px solid #ccc;
     padding-top: 10px;

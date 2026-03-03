@@ -16,7 +16,6 @@ const DXFWriter = {
         
         // Linetype Table
         dxf += `0\nTABLE\n2\nLTYPE\n70\n1\n`;
-        //dxf += `0\nLTYPE\n2\nCENTER\n70\n64\n3\nCenter ____ _ ____ _ ____\n72\n65\n73\n4\n40\n50.0\n49\n30.0\n49\n-5.0\n49\n5.0\n49\n-5.0\n`;
           dxf += `0\nLTYPE\n2\nCENTER\n70\n64\n3\nCenter ____ _ ____ _ ____\n72\n65\n73\n4\n40\n100.0\n49\n60.0\n49\n-10.0\n49\n10.0\n49\n-10.0\n`;
           dxf += `0\nENDTAB\n`;
 
@@ -87,7 +86,6 @@ const DXFWriter = {
             }
 
             // Centerline using fixedTopY
-            //dxf += this._line(currentX, centerY, currentX, fixedTopY, "CENTERLINE");
              dxf += this._line(currentX, centerY + (p.p_od / 2), currentX, fixedTopY, "CENTERLINE");
              dxf += this._line(currentX - (p.p_od / 2), centerY, currentX + (p.p_od / 2), centerY, "CENTERLINE");
              dxf += this._line(currentX, centerY - (p.p_od / 2), currentX, centerY + (p.p_od / 2), "CENTERLINE");

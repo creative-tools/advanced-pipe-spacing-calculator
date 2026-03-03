@@ -26,7 +26,6 @@ const Persistence = {
                 cls: row.querySelector(".p_class").value,
                 p_ins: row.querySelector(".p_ins").value,
                 f_ins: row.querySelector(".f_ins").value,
-                bop_enabled: row.querySelector(".bop_check").checked,
                 bop_val: row.querySelector(".bop_val").value
             });
         });
@@ -74,11 +73,8 @@ const Persistence = {
                     lastRow.querySelector(".p_ins").value = p.p_ins;
                     lastRow.querySelector(".f_ins").value = p.f_ins;
                     
-                    const bopCheck = lastRow.querySelector(".bop_check");
                     const bopInput = lastRow.querySelector(".bop_val");
-                    bopCheck.checked = p.bop_enabled;
-                    bopInput.value = p.bop_val;
-                    bopInput.disabled = !p.bop_enabled;
+                    bopInput.value = p.bop_val || 0;
                     lastRow.querySelector(".p_size").dispatchEvent(new Event("change"));
                 });
 
@@ -86,12 +82,9 @@ const Persistence = {
                 updateResult();
                 alert("Project loaded successfully!");
             } catch (err) {
-                // Modified to show the actual error message thrown
                 alert("Error: " + err.message);
                 console.error(err);
             } finally {
-                //
-                // Reset the file input so the 'change' event triggers next time
                 event.target.value = "";
             }
         };
