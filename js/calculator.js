@@ -40,7 +40,7 @@ function createPipeUI(insertAfterRow = null) {
             <label>Insul<br>(mm):</label> 
             <input type="number" class="p_ins" value="0" min="0">
             
-            <label>Flg Ins<br>(mm):</label> 
+            <label>Flg Insul<br>(mm):</label> 
             <input type="number" class="f_ins" value="0" min="0">
             
             <label>BOP<br>(mm):</label>
