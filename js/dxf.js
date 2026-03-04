@@ -13,7 +13,7 @@ const DXFWriter = {
         
         // 2. TABLES - Required for Layers and Linetypes
         dxf += `0\nSECTION\n2\nTABLES\n`;
-        
+
         // Linetype Table
         dxf += `0\nTABLE\n2\nLTYPE\n70\n1\n`;
           dxf += `0\nLTYPE\n2\nCENTER\n70\n64\n3\nCenter ____ _ ____ _ ____\n72\n65\n73\n4\n40\n100.0\n49\n60.0\n49\n-10.0\n49\n10.0\n49\n-10.0\n`;
@@ -117,21 +117,30 @@ const DXFWriter = {
         return `0\nTEXT\n8\n${layer}\n10\n${x.toFixed(3)}\n20\n${y.toFixed(3)}\n30\n0.0\n40\n30.0\n1\n${val}\n50\n${rot}\n`;
     },
     
-
-    _getLayerTable() {
+_getLayerTable() {
         const layers = [
-            { name: "PIPE", color: 7, ltype: "CONTINUOUS" },
-            { name: "PIPE_INSUL", color: 3, ltype: "CONTINUOUS" },
-            { name: "FLANGE", color: 2, ltype: "CONTINUOUS" },
-            { name: "FLANGE_INSUL", color: 4, ltype: "CONTINUOUS" },
-            { name: "TEXT", color: 7, ltype: "CONTINUOUS" },
-            { name: "CENTERLINE", color: 1, ltype: "CENTER" }
+            { name: "PIPE", color: 7, ltype: "CONTINUOUS", isOff: false },
+            { name: "PIPE_INSUL", color: 3, ltype: "CONTINUOUS", isOff: true },
+            { name: "FLANGE", color: 2, ltype: "CONTINUOUS", isOff: true },
+            { name: "FLANGE_INSUL", color: 4, ltype: "CONTINUOUS", isOff: true },
+            { name: "TEXT", color: 7, ltype: "CONTINUOUS", isOff: false },
+            { name: "CENTERLINE", color: 1, ltype: "CENTER", isOff: false }
         ];
+
         let table = `0\nTABLE\n2\nLAYER\n70\n${layers.length}\n`;
+
         layers.forEach(l => {
-            // R12 Layer flags (70) usually 64 for "standard"
-            table += `0\nLAYER\n2\n${l.name}\n70\n64\n62\n${l.color}\n6\n${l.ltype}\n`;
+            // 1. Code 62: Negative value = Layer Off
+            const finalColor = l.isOff ? -Math.abs(l.color) : Math.abs(l.color);
+            
+            // 2. Code 70: 1 = Frozen (Invisible), 0 = Thawed (Visible)
+            // Note: 64 is also common for "standard/visible", but QCAD used 1 in test.
+            const finalFlag = l.isOff ? 1 : 64;
+
+            table += `0\nLAYER\n2\n${l.name}\n70\n${finalFlag}\n62\n${finalColor}\n6\n${l.ltype}\n`;
         });
+
         return table + `0\nENDTAB\n`;
-    }
+    } 
+   
 };
