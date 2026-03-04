@@ -102,13 +102,65 @@ Fl<!DOCTYPE html>
                 
             <h3>Functions</h3>
                 <ul>
-                    <li><strong>Download DXF:</strong> Exports a DXF (version R12, metric, mm) cross-section drawing.  Each entity is on its own layer.</li>
+                    <li><strong>Download DXF:</strong> Exports a DXF (version R12, metric, mm) side view drawing.  Each entity is on its own layer.</li>
                     <li><strong>Download PDF:</strong> Exports a report in PDF format, showing the current pipeline setup and respective results.</li>
                     <li><strong>Save Setup:</strong> Saves your current pipeline arrangement locally as a <code>.json</code> file. </li>
                     <li><strong>Load Setup:</strong> Loads a saved pipeline arrangement from a <code>.json</code> file. </li>
                     <li><strong>+ Add Pipe:</strong> Inserts a new pipeline below the selected pipeline</li>
                     <li><strong>Remove:</strong> Delete the selected pipeline from the current arrangement</li>
                </ul>
+               
+            <h3> Total required space</h3>
+                <p>The total required space result displayed, is calculated by adding the radius of the first and last pipe, plus the insulation thickness of the first and last pipe, plus the sum of all the center to center distances, according to the current piping arrangement. The figure below illustrates that logic.</p>
+                <figure>
+                      <img src="img/total-space_650x350.webp" alt="staggered flanges arrangement" width="650" height="350">
+                      <figcaption>Calculation of total space required for piping arrangement</figcaption>
+                </figure>
+            
+            <h3>DXF drawing</h3>
+                <p>When pressing the Download DXF button, the calculator generates a DXF drawing based on the current piping arrangement, settings and numreric results. The drawing creates geometries which are then designated to appropriate layers. The specified layers are:</p>
+                <ul>
+                    <li><strong>CENTERLINE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                    <li><strong>FLANGE</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                    <li><strong>FLANGE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                    <li><strong>PIPE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                    <li><strong>PIPE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                    <li><strong>TEXT</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                </ul>
+                
+                <p>Using the default setup the geometry that is displayed is a section view of the pipeline <i>(see Fig.1)</i>. The hidden layers however can display all the relevant geometries of the respective elements, if their visibility is turned on <i>(see Fig.2)</i></p>
+                
+                <div>
+                    <figure>
+                          <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
+                          <figcaption>Fig.1 pipe drawing with default layers on</figcaption>
+                    </figure>
+                    
+                    <figure>
+                          <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
+                          <figcaption>Fig.2 pipe drawing with hidden layers on</figcaption>
+                    </figure>
+                </div>
+                
+                <p>The purpose of the hidden <i>'helper'</i> layers is to allow the uset to visually check the calculator results and verify that the specified Gap in the global settings is honored. For example, the default drawing generated, will only disply the necessary geometries created <i>(see Fig.3)</i>. However, if the user turns the visibilty ON for the hidden <i>'helper'</i>  layers, he can very easily verify that the gap is indeed as specified, measuread against the extreme edges of the profiles of flanges and isulations of the pipelines <i>(see Fig.4)</i>.
+                
+                <div>
+                    <figure>
+                          <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
+                          <figcaption>Fig.3 piping arrangement with center to center distance</figcaption>
+                    </figure>
+                    
+                    <figure>
+                          <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
+                          <figcaption>Fig.4 verification of minimum gap requirement with helper layers</figcaption>
+                    </figure>
+                </div>
+                
+                <section class="intro-description">
+                    <p><strong style="color: red;">NOTICE:</strong>. Turning the hidden 'helper' layers on will lead in many cases to a visual overlap of graphical elements, e.g. flanges of adjacent pipelines may appear close together or ever overlap. However, remember that we are working on a basis of <strong>staggered</strong>  flanges setup. That means that these flanges are not on the same plane on the z-axis, hence they do not actually clash.</p>
+                </section>
+                
+            
                
             <h3>Abbreviations</h3>
                 <ul>
