@@ -74,14 +74,14 @@ const DXFWriter = {
             dxf += this._arc(currentX, centerY - arcRad, arcRad, 270, 90, "PIPE");
             // ---------------------------------------
             if (p.p_ins > 0) {
-                dxf += this._circle(currentX, centerY, (p.p_od / 2) + p.p_ins, "PIPE_INSUL");
+                dxf += this._circle(currentX, centerY, (p.p_od / 2) + p.p_ins, "PIPE_INSULATION");
             }
 
             if (mode !== 'pp') {
                 dxf += this._circle(currentX, centerY, p.f_od / 2, "FLANGE");
 
                 if (p.f_ins > 0) {
-                    dxf += this._circle(currentX, centerY, (p.f_od / 2) + p.f_ins, "FLANGE_INSUL");
+                    dxf += this._circle(currentX, centerY, (p.f_od / 2) + p.f_ins, "FLANGE_INSULATION");
                 }
             }
 
@@ -120,9 +120,9 @@ const DXFWriter = {
 _getLayerTable() {
         const layers = [
             { name: "PIPE", color: 7, ltype: "CONTINUOUS", isOff: false },
-            { name: "PIPE_INSUL", color: 3, ltype: "CONTINUOUS", isOff: true },
+            { name: "PIPE_INSULATION", color: 3, ltype: "CONTINUOUS", isOff: true },
             { name: "FLANGE", color: 2, ltype: "CONTINUOUS", isOff: true },
-            { name: "FLANGE_INSUL", color: 4, ltype: "CONTINUOUS", isOff: true },
+            { name: "FLANGE_INSULATION", color: 4, ltype: "CONTINUOUS", isOff: true },
             { name: "TEXT", color: 7, ltype: "CONTINUOUS", isOff: false },
             { name: "CENTERLINE", color: 1, ltype: "CENTER", isOff: false }
         ];
