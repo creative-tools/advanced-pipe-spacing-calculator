@@ -113,53 +113,56 @@
             </section>
             
             <section id="dxf-drawing">
-                <h3>DXF drawing</h3>
-                    <p>When pressing the Download DXF button, the calculator generates a DXF drawing based on the current piping arrangement, settings and numreric results. The drawing creates geometries which are then designated to appropriate layers. The specified layers are:</p>
-                    <ul>
-                        <li><strong>CENTERLINE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
-                        <li><strong>FLANGE</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
-                        <li><strong>FLANGE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
-                        <li><strong>PIPE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
-                        <li><strong>PIPE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
-                        <li><strong>TEXT</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
-                    </ul>
-                    
-                    <p>Using the default setup the geometry that is displayed is a section view of the pipeline <i>(see Fig.1)</i>. The hidden layers however can display all the relevant geometries of the respective elements, if their visibility is turned on <i>(see Fig.2)</i></p>
-                    
-                <div>
-                    <figure>
-                          <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
-                          <figcaption>Fig.1 pipe drawing with default layers on</figcaption>
-                    </figure>
-                    
-                    <figure>
-                          <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
-                          <figcaption>Fig.2 pipe drawing with hidden layers on</figcaption>
-                    </figure>
-                </div>
-                    
-                <p>The purpose of the hidden <i>'helper'</i> layers is to allow the uset to visually check the calculator results and verify that the specified Gap in the global settings is honored. For example, the default drawing generated, will only disply the necessary geometries created <i>(see Fig.3)</i>. However, if the user turns the visibilty ON for the hidden <i>'helper'</i>  layers, he can very easily verify that the gap is indeed as specified, measuread against the extreme edges of the profiles of flanges and isulations of the pipelines <i>(see Fig.4)</i>.
-                    
-                <div>
-                    <figure>
-                          <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
-                          <figcaption>Fig.3 piping arrangement with center to center distance</figcaption>
-                    </figure>
-                    
-                    <figure>
-                          <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
-                          <figcaption>Fig.4 verification of minimum gap requirement with helper layers</figcaption>
-                    </figure>
-                </div>
+                <h2 class="section-title">DXF drawing</h2>
+                    <h3>DXF Export Functionality</h3>
+                        <p>When you click the Download DXF button, the calculator generates a drawing based on the current piping arrangement, settings, and numerical results. The generated geometries are automatically assigned to specific layers with the following default visibility settings:</p>
+                        <ul>
+                            <li><strong>CENTERLINE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                            <li><strong>FLANGE</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                            <li><strong>FLANGE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                            <li><strong>PIPE</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                            <li><strong>PIPE_INSULATION</strong> <i>(visibilty set to <b style="color: red;">OFF</b>)</i></li>
+                            <li><strong>TEXT</strong> <i>(visibilty set to <b style="color: #0056b3;">ON</b>)</i></li>
+                        </ul>
+                    <h3>Layer Visibility and Verification</h3>
+                        <p>Using the default setup the geometry that is displayed is a section view of the pipeline <i>(see Fig.1)</i>. The hidden layers however can display all the relevant geometries of the respective elements, if their visibility is turned on <i>(see Fig.2)</i></p>
                 
-                <div class="intro-description">
-                    <p><strong style="color: red;">NOTICE:</strong> Enabling the hidden 'helper' layers will often result in a visual overlap of graphical elements (e.g., flanges of adjacent pipelines). However, please remember that we are using a <b>staggered flange setup</b>. Because these flanges are on different planes along the Z-axis, they do not actually clash.</p>
-                </div>
+                        <div>
+                            <figure>
+                                  <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
+                                  <figcaption>Fig.1 pipe drawing with default layers on</figcaption>
+                            </figure>
+                            
+                            <figure>
+                                  <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
+                                  <figcaption>Fig.2 pipe drawing with hidden layers on</figcaption>
+                            </figure>
+                        </div>
+                
+                        <p>The purpose of these hidden "helper" layers is to allow the user to visually verify the calculator’s results and ensure that the Gap specified in the global settings is honored.</p>
+
+                        <p>For instance, the default drawing only displays the primary geometries (see Fig. 3). By enabling the hidden helper layers, you can easily verify that the gap is correct by measuring against the outermost edges of the flanges and insulation profiles (see Fig. 4).</p>
+                
+                        <div>
+                            <figure>
+                                  <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
+                                  <figcaption>Fig.3 piping arrangement with center to center distance</figcaption>
+                            </figure>
+                            
+                            <figure>
+                                  <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
+                                  <figcaption>Fig.4 verification of minimum gap requirement with helper layers</figcaption>
+                            </figure>
+                        </div>
+            
+                        <div class="intro-description">
+                            <p><strong style="color: red;">NOTICE:</strong> Enabling the hidden 'helper' layers will often result in a visual overlap of graphical elements (e.g., flanges of adjacent pipelines). However, please remember that we are using a <b>staggered flange setup</b>. Because these flanges are on different planes along the Z-axis, they do not actually clash.</p>
+                        </div>
             </section>
                 
             
             <section id="abbreviations">   
-                <h3>Abbreviations</h3>
+                <h2 class="section-title">Abbreviations</h2>
                     <ul>
                         <li><strong>NPS:</strong> Nominal Pipe Size</li>
                         <li><strong>OD:</strong> Outside Diameter</li>
