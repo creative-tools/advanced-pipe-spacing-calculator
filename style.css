@@ -66,6 +66,7 @@ body {
         width: 300px; 
         flex: 0 0 300px; 
         margin-bottom: 0;
+        order: -1;
     }
 
     .ad-placeholder {
