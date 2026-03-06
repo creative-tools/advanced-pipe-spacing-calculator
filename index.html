@@ -16,27 +16,27 @@
 <body>
     <div class="main-layout-wrapper">
         <main class="calculator-content">
-            <header class="page-header">
+
+            <!-- ═══ HEADER ═══ -->
+            <header class="site-header">
                 <div>
-                    <h1 class="main-title">Advanced Pipe Spacing Calculator</h1>
-                    <h2 class="sub-title">for Piping Engineers</h2>
+                    <h1>Advanced Pipe Spacing Calculator</h1>
+                    <p class="sub-title">for Piping Engineers</p>
                 </div>
                 <nav>
                     <a href="help.html" class="header-nav">Help</a>
                 </nav>
             </header>
-            
+
             <img src="img/piping-arrangement.webp" alt="Piping arrangement" width="600" height="293">
-            
-            <section id="intro" class="intro-description">           
+
+            <section id="intro" class="intro-description">
                 <h3 class="section-title">Introduction</h3>
-                    <p>The advanced pipe spacing calculator is intended for piping engineers and designers who need a quick, reliable way to establish minimum spacing for parallel pipelines. It focuses on practical, real-world spacing decisions so you get a clear, engineering-oriented results which update instantly.</p>
-                    
-                    <p>Use the tool to model multiple pipeline arrangements, estimate the total space occupied by the pipelines and export the results as <a href="help.html#dxf-drawing">DXF</a> or a compact PDF report, to further use in your studies. Inputs such as NPS, flange class and insulation thickness are used to generate geometry that you can verify visually and export for drafting.</p>
-                        
-                    <p>For background on the calculation assumptions (staggered flanges, rounding rules and verification layers), examples of DXF output, sample figures and a detailed user guide, visit our <a href="help.html" style="text-decoration: none; font-weight: bold;">Help</a> page.</p>
+                <p>The advanced pipe spacing calculator is intended for piping engineers and designers who need a quick, reliable way to establish minimum spacing for parallel pipelines. It focuses on practical, real-world spacing decisions so you get a clear, engineering-oriented results which update instantly.</p>
+                <p>Use the tool to model multiple pipeline arrangements, estimate the total space occupied by the pipelines and export the results as <a href="help.html#dxf-drawing">DXF</a> or a compact PDF report, to further use in your studies. Inputs such as NPS, flange class and insulation thickness are used to generate geometry that you can verify visually and export for drafting.</p>
+                <p>For background on the calculation assumptions (staggered flanges, rounding rules and verification layers), examples of DXF output, sample figures and a detailed user guide, visit our <a href="help.html" style="text-decoration: none; font-weight: bold;">Help</a> page.</p>
             </section>
-        
+
             <div class="button-group">
                 <div class="button-pair">
                     <button type="button" class="toolbar-btn" onclick="downloadDXF()">Download DXF</button>
@@ -48,41 +48,41 @@
                     <input type="file" id="importFile" style="display:none;" accept=".json" onchange="Persistence.importSession(event)">
                 </div>
             </div>
-        
+
             <h3>Global Settings</h3>
-            <label>Gap (mm):</label> 
+            <label>Gap (mm):</label>
             <input type="number" id="gap" value="25" min="0" step="1">
-            
+
             <div style="margin-top: 10px; margin-bottom: 10px;">
                 <label style="font-weight: bold;">Calculation Logic:</label>
                 <div>
-                <label><input type="radio" name="calcMode" value="pf" checked> Pipe-to-Flange</label>
-                <label><input type="radio" name="calcMode" value="pp"> Pipe-to-Pipe</label>
+                    <label><input type="radio" name="calcMode" value="pf" checked> Pipe-to-Flange</label>
+                    <label><input type="radio" name="calcMode" value="pp"> Pipe-to-Pipe</label>
                 </div>
             </div>
-            
-            <h3>Pipeline Data</h3>
-                <div id="pipesContainer">
-                </div>
-                
-                <div id="totalSpacingDisplay">
-                </div>
 
+            <h3>Pipeline Data</h3>
+            <div id="pipesContainer"></div>
+            <div id="totalSpacingDisplay"></div>
+
+            <!-- ═══ FOOTER ═══ -->
             <footer>
                 <div class="footer-text-block footer-border-top">
-                    <strong>Disclaimer:</strong> This tool is provided for informational and 
-                     educational purposes only. While every effort has been made to ensure accuracy 
-                     and compliance with piping standards, the author makes no warranties, expressed 
-                     or implied, regarding the accuracy or fitness of this data for any specific application. 
-                     Users should always verify results against the official piping code standards and all dimensions 
-                     and outputs must be verified by a qualified engineer before design, fabrication or installation.
-                     The author shall not be liable for any damages resulting from the use of this tool.
+                    <strong>Disclaimer:</strong> This tool is provided for informational and
+                    educational purposes only. While every effort has been made to ensure accuracy
+                    and compliance with piping standards, the author makes no warranties, expressed
+                    or implied, regarding the accuracy or fitness of this data for any specific application.
+                    Users should always verify results against the official piping code standards and all dimensions
+                    and outputs must be verified by a qualified engineer before design, fabrication or installation.
+                    The author shall not be liable for any damages resulting from the use of this tool.
                 </div>
-                <div class="footer-text-block">
-                    <a href="help.html#privacy-policy">Privacy Policy</a> 
+                <div class="site-footer-bar">
+                    &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp;
+                    <a href="help.html">Help</a> &nbsp;|&nbsp;
+                    <a href="privacy.html">Privacy Policy</a>
                 </div>
             </footer>
-            
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
             <script src="js/data.js"></script>
@@ -92,14 +92,12 @@
             <script src="js/calculator.js"></script>
             <script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
         </main>
-        
+
         <!-- <aside class="adsense-container">
             <div class="ad-sticky-wrapper">
-                <div class="ad-placeholder">
-                </div>
+                <div class="ad-placeholder"></div>
             </div>
         </aside> -->
     </div>
 </body>
 </html>
-

@@ -1,14 +1,34 @@
-/* General Layout */
+/* ==============================================
+   COLOUR TOKENS  (change here, changes everywhere)
+   #1a2e44  — deep navy        (headings, header bg)
+   #e67e22  — orange           (accents, borders)
+   #1a6faa  — mid blue         (links, interactive)
+   #3d5166  — slate            (body text)
+   #a8c0d6  — muted sky        (subtitles, muted text)
+   #666     - light black      (disclaimer, ficaptions)
+   #eaf3fb  — pale blue tint   (backgrounds, highlights)
+   #f5f7fa  — off-white        (page background)
+   =============================================== */
+
+/* ── RESET & BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.7;
+    color: #3d5166;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #f5f7fa;
 }
 
-/* --- Layout Container --- */
+a {
+    color: #1a6faa;
+    transition: color 0.2s;
+}
+a:hover { color: #1a2e44; }
+
+/* ── LAYOUT ───────────────────────────────────── */
 .main-layout-wrapper {
     display: flex;
     flex-direction: column;
@@ -18,158 +38,215 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Ad Container --- */
-.adsense-container {
-    width: 100%;
-    text-align: center;
-    flex-shrink: 0; 
-}
-
-/* This wrapper handles the sticking */
-.ad-sticky-wrapper {
-    position: sticky;
-    top: 20px; 
-    height: auto;
-}
-
-.ad-placeholder {
-    background: #ebebeb;
-    border: 1px solid #ddd;
-    min-height: 250px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    width: 100%;
-    max-width: 300px; 
-    margin: 0 auto;
-}
-
 .calculator-content {
     flex: 1;
     width: 100%;
     max-width: 900px;
-    min-width: 0; 
+    min-width: 0;
 }
 
-/* --- Desktop Layout Switch (>= 720px) --- */
+/* ── AD CONTAINER (ready for AdSense) ─────────── */
+.adsense-container {
+    width: 100%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.ad-sticky-wrapper {
+    position: sticky;
+    top: 20px;
+    height: auto;
+}
+
+.ad-placeholder {
+    background: #eaf3fb;
+    border: 1px solid #b3d4ea;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #a8c0d6;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
 @media (min-width: 720px) {
     .main-layout-wrapper {
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: center;
-        max-width: 100%; 
-        gap: 20px; 
+        max-width: 100%;
+        gap: 20px;
     }
-
     .adsense-container {
-        width: 300px; 
-        flex: 0 0 300px; 
+        width: 300px;
+        flex: 0 0 300px;
         margin-bottom: 0;
         order: -1;
     }
-
-    .ad-placeholder {
-        min-height: 600px;
-    }
-
+    .ad-placeholder { min-height: 600px; }
     .calculator-content {
-        min-width: 400px; 
-        margin: 0; 
+        min-width: 400px;
+        margin: 0;
     }
 }
 
-.main-title {
-    color: #063B7A; 
-    font-size: 1.6em;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-/* --- Header Styling --- */
-.page-header {
+/* ── SHARED SITE HEADER ───────────────────────── */
+.site-header {
+    background: #1a2e44;
+    color: #fff;
+    padding: 20px 24px;
+    border-bottom: 3px solid #e67e22;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; 
-    border-bottom: 3px solid #0056b3; 
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+    align-items: flex-end;
+    margin: -15px -15px 30px -15px;
 }
 
-.page-header .main-title {
+.site-header h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
     margin: 0;
 }
 
-/* Optional: A class for header navigation links */
-.header-nav {
-    text-decoration: none;
-    font-weight: bold;
-    color: #0056b3;
-    transition: color 0.2s;
-}
-
-.header-nav:hover {
-    color: #063B7A;
-}
-
-/* Optional: Subtitle styling for the help page */
-.page-header .sub-title {
-    margin: 5px 0 0 0;
-    font-size: 1.2em;
-    color: #666;
+.site-header .sub-title {
+    margin: 4px 0 0 0;
+    font-size: 1.0em;
+    color: #a8c0d6;
     font-weight: normal;
 }
 
-/* --- Intro Description Block --- */
-.intro-description {
-    background-color: #ffffff;
-    border-left: 4px solid #6c757d; 
-    border-radius: 4px;
-    padding: 15px 20px;
-    margin-bottom: 25px; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    color: #495057;
+.site-header .header-nav {
+    text-decoration: none;
+    font-weight: bold;
+    color: #e67e22;
     font-size: 0.95em;
-    line-height: 1.6;
+    transition: color 0.2s;
+    white-space: nowrap;
 }
 
-.intro-description p {
-    margin: 0 0 10px 0;
+.site-header .header-nav:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 
-.intro-description p:last-child {
-    margin-bottom: 0;
-}
-
-/* --- Headings & Global UI --- */
-h3 {
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 5px;
-    color: #0056b3;
-    margin-top: 30px;
-}
-
-/* --- Major Section Titles --- */
-.section-title {
-    color: #063B7A; 
-    font-size: 1.3em;
+/* ── SHARED SITE FOOTER ───────────────────────── */
+.site-footer-bar {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #a8c0d6;
+    padding: 24px 0 12px;
+    border-top: 1px solid #dce3ea;
     margin-top: 40px;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #ddd;
-    letter-spacing: 1.5px;
 }
 
+.site-footer-bar a {
+    color: #1a6faa;
+    text-decoration: none;
+}
+
+.site-footer-bar a:hover { text-decoration: underline; }
+
+/* ── HEADINGS ─────────────────────────────────── */
+
+/* H2 major section titles (help.html .section-title) */
+h2.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a2e44;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-left: 3px solid #e67e22;
+    padding-left: 12px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    border-bottom: none;
+}
+
+/* H3 sub-section headings */
+h3 {
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: #1a2e44;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #dce3ea;
+    padding-bottom: 6px;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+/* Pipe card label */
 h4.pipe-label {
     margin: 0;
-    color: #0056b3;
-    font-size: 1em;
+    color: #1a6faa;
+    font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-weight: 700;
 }
 
-/* --- Pipe Group Cards --- */
+/* ── INTRO DESCRIPTION BLOCK ──────────────────── */
+.intro-description {
+    background-color: #eaf3fb;
+    border-left: 4px solid #e67e22;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    color: #3d5166;
+    font-size: 0.95em;
+    line-height: 1.7;
+}
+
+.intro-description p { margin: 0 0 10px 0; }
+.intro-description p:last-child { margin-bottom: 0; }
+
+/* ── GLOBAL SETTINGS INPUTS ───────────────────── */
+label {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #3d5166;
+}
+
+select,
+input[type="number"],
+input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #b3d4ea;
+    border-radius: 4px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+    background: #fff;
+    color: #1a2e44;
+    transition: border-color 0.2s;
+}
+
+select:focus,
+input[type="number"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 2px rgba(230,126,34,0.12);
+}
+
+input[type="number"] {
+    width: 100%;
+    max-width: 80px;
+}
+
+#gap {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #1a2e44;
+    width: 80px;
+}
+
+/* ── PIPE GROUP CARDS ─────────────────────────── */
 .pipe-row {
     display: flex;
     flex-wrap: wrap;
@@ -181,15 +258,15 @@ h4.pipe-label {
 .pipe-group {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px rgba(26,46,68,0.08);
     padding: 15px;
-    flex: 2; 
-    min-width: 280px; 
+    flex: 2;
+    min-width: 280px;
     display: grid;
     grid-template-columns: max-content 1fr max-content 1fr;
     align-items: center;
     gap: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #dce3ea;
 }
 
 .name-row, .header-row, .footer-row {
@@ -200,7 +277,7 @@ h4.pipe-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eaf3fb;
     margin-bottom: 5px;
     padding-bottom: 5px;
 }
@@ -211,64 +288,62 @@ h4.pipe-label {
     gap: 10px;
 }
 
-/* --- Result Column (Strict 130px) --- */
+.p_od_disp, .f_od_disp {
+    background: #eaf3fb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1em;
+    color: #1a2e44;
+    border: 1px solid #b3d4ea;
+}
+
+/* ── RESULT COLUMN ────────────────────────────── */
 .result-column {
     width: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #eef4ff;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    padding: 10px;
+    background: #eaf3fb;
+    box-shadow: 0 1px 4px rgba(26,46,68,0.08);
+    padding: 12px 10px;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 6px;
     flex-shrink: 0;
-    border-left: 1px solid #d0e0ff;
+    border-left: 3px solid #e67e22;
 }
 
 .result-column .label {
-    font-size: 0.75em; 
+    font-size: 0.72em;
+    /* color: #a8c0d6; */
     color: #666;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .result-column .value {
-    font-size: 1.2em; 
-    font-weight: bold;
-    color: #0056b3;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #1a2e44;
 }
 
-/* --- Form Elements --- */
-label {
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #555;
+/* ── TOTAL SPACING DISPLAY ────────────────────── */
+#totalSpacingDisplay {
+    /* background: #1a2e44; */
+    background: #3d5166;
+    border-left: 5px solid #e67e22;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(26,46,68,0.15);
+    margin-top: 10px;
 }
 
-select, input[type="number"], input[type="text"] {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9em;
-    box-sizing: border-box; 
-}
-
-input[type="number"] {
-    width: 100%; 
-    max-width: 80px;
-}
-
-.p_od_disp, .f_od_disp {
-    background: #e9ecef;
-    padding: 2px 6px;
-    border-radius: 4px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 1em;
-}
-
-/* --- Buttons --- */
+/* ── BUTTONS ──────────────────────────────────── */
 button {
     cursor: pointer;
     font-weight: 600;
@@ -278,38 +353,6 @@ button {
     transition: all 0.2s;
 }
 
-.add-pipe-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 0.8em 1em;
-    font-size: 0.8em;
-}
-
-.add-pipe-btn:hover {
-    background-color: #218838;
-}
-
-.footer-row {
-    display: flex;
-    justify-content: flex-start;
-    border-top: 1px solid #eee;
-    margin-top: 10px;
-    padding-top: 10px;
-}
-
-.remove-btn {
-    background-color: transparent;
-    border: 1px solid #dc3545 !important;
-    font-size: 0.8em;
-    color: #dc3545;
-}
-
-.remove-btn:hover {
-    background-color: #dc3545;
-    color: white !important;
-}
-
-/* The main container */
 .button-group {
     display: flex;
     flex-wrap: wrap;
@@ -321,15 +364,15 @@ button {
     display: flex;
     flex: 1;
     gap: 10px;
-    min-width: 300px; 
+    min-width: 300px;
 }
 
 .toolbar-btn {
-    flex: 1; 
-    font-size: 1.1em;
+    flex: 1;
+    font-size: 1.0em;
     padding: 12px;
-    border: none;
-    border-radius: 4px;
+    border-left: 4px solid #e67e22;
+    border-radius: 6px;
     cursor: pointer;
     color: white;
     transition: background 0.2s;
@@ -337,95 +380,208 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    text-decoration: none; 
+    text-decoration: none;
+    background-color: #1a6faa;
+    font-weight: 600;
+}
+
+.toolbar-btn:hover { background-color: #1a2e44; }
+
+.btn-persistence { background-color: #3d5166; }
+.btn-persistence:hover { background-color: #1a2e44; }
+
+.add-pipe-btn {
+    /* background-color: #eaf3fb; */
     background-color: #28a745;
+    /* color: #1a6faa; */
+    color: white;
+    /* border: 1px solid #b3d4ea !important; */
+    padding: 0.7em 1em;
+    font-size: 0.85em;
+    /* border-radius: 4px; */
+    font-weight: 600;
 }
 
-.toolbar-btn:hover {
+.add-pipe-btn:hover {
+    /* background-color: #1a6faa; */
     background-color: #218838;
+    /* color: #fff; */
+    /* border-color: #1a6faa !important; */
 }
 
-.btn-persistence {
-    background-color: #6f42c1; 
+.footer-row {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid #eaf3fb;
+    margin-top: 10px;
+    padding-top: 10px;
 }
-.btn-persistence:hover {
-    background-color: #59359a;
+
+.remove-btn {
+    background-color: transparent;
+    /* border: 1px solid #e67e22 !important; */
+    border: 1px solid #dc3545 !important;
+    font-size: 0.8em;
+    /* color: #e67e22; */
+    color: #dc3545;
+    font-weight: 600;
 }
- 
+
+.remove-btn:hover {
+    /* background-color: #e67e22; */
+    background-color: #dc3545;
+    color: white !important;
+}
+
+/* ── FORMULA BOX (help.html) ──────────────────── */
 .formula-container {
-    background-color: #ffffff; 
-    border: 1px solid #e1e4e8; 
-    border-radius: 8px; 
+    background-color: #fff;
+    border: 1px solid #dce3ea;
+    border-left: 3px solid #e67e22;
+    border-radius: 6px;
     padding: 25px;
-    margin: 25px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(26,46,68,0.05);
     overflow-x: auto;
 }
 
 .formula-label {
-    font-family: 'Georgia', 'Times New Roman', Times, serif; 
-    font-style: italic; 
-    font-weight: normal; 
-    color: #6c757d; 
-    margin-bottom: 15px;
-    display: inline-block; 
-    font-size: 1rem;
-    border-bottom: 1px solid #e1e4e8; 
-    padding-bottom: 4px;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    /* color: #a8c0d6; */
+    color: #666;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eaf3fb;
+    padding-bottom: 3px;
 }
 
-
-/* --- Results Footer --- */
-#gap {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #0056b3;
-    width: 80px;
-}
-
-#totalSpacingDisplay {
-    background: #063B7A; 
-    border-left: 5px solid #28a745; 
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 1.1em;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* Styling for images in the User Guide */
+/* ── IMAGES & FIGURES ─────────────────────────── */
 .calculator-content img {
-    max-width: 100%;    
-    height: auto;       
-    display: block;     
-    margin: 15px auto;  
-    border: 1px solid #ddd; 
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle "pop" */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #dce3ea;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(26,46,68,0.08);
 }
 
 .calculator-content figcaption {
     text-align: center;
     font-style: italic;
-    color: #555;
-    margin-top: -5px; 
-    font-size: 0.9em; 
+    /* color: #a8c0d6; */
+    color: 666;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    font-size: 0.88em;
 }
 
-/* --- Footer Section --- */
-
+/* ── DISCLAIMER FOOTER BLOCK ──────────────────── */
 .footer-text-block {
     margin-top: 30px;
     font-size: 0.8em;
-    color: #666;
+    /* color: #a8c0d6; */
+    color: 666;
     text-align: center;
 }
 
 .footer-border-top {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+    border-top: 1px solid #dce3ea;
+    padding-top: 12px;
 }
+
+/* ── PRIVACY PAGE ─────────────────────────────── */
+.privacy-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 0 64px;
+}
+
+.privacy-page-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1a2e44;
+    margin-bottom: 6px;
+}
+
+.privacy-last-updated {
+    font-size: 0.85rem;
+    color: #a8c0d6;
+    margin-bottom: 40px;
+}
+
+.privacy-highlight-box {
+    background: #eaf3fb;
+    border: 1px solid #b3d4ea;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 24px 0;
+}
+
+.privacy-highlight-box p {
+    color: #1a4a6e;
+    margin: 0;
+}
+
+.privacy-section {
+    margin-bottom: 36px;
+}
+
+.privacy-section h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a2e44;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-left: 3px solid #e67e22;
+    padding-left: 12px;
+    margin-bottom: 14px;
+    border-bottom: none;
+}
+
+.privacy-section p {
+    margin-bottom: 12px;
+    color: #3d5166;
+}
+
+.privacy-section p:last-child { margin-bottom: 0; }
+
+.privacy-section ul {
+    margin: 10px 0 12px 20px;
+    color: #3d5166;
+}
+
+.privacy-section ul li { margin-bottom: 6px; }
+.privacy-section a { color: #1a6faa; }
+
+/* ── LEGACY FALLBACKS ─────────────────────────── */
+.main-title {
+    color: #1a2e44;
+    font-size: 1.6em;
+    margin: 0;
+    font-weight: 700;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 3px solid #e67e22;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.header-nav {
+    text-decoration: none;
+    font-weight: bold;
+    color: #1a6faa;
+    transition: color 0.2s;
+}
+
+.header-nav:hover { color: #1a2e44; }
 
 .site-footer {
     text-align: center;
@@ -435,12 +591,11 @@ button {
 
 .site-footer a {
     font-size: 0.8em;
-    color: #999;
+    color: #a8c0d6;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-    color: #555;
+    color: #3d5166;
     text-decoration: underline;
 }
