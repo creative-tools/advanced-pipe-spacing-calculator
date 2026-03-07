@@ -21,8 +21,15 @@
                 <p class="sub-title">for Piping Engineers</p>
             </div>
         <nav>
-            <a href="index.html" class="header-nav">← Calculator</a>
-            <a href="help.html" class="header-nav">Help</a>
+            <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
+                &#9776;
+            </button>
+            <div class="nav-menu" id="navMenu">
+
+                <!-- about.html -->
+                <a href="index.html" class="header-nav">Calculator</a>
+                <a href="help.html" class="header-nav">Help</a>
+            </div>
         </nav>
         </header>
 
@@ -102,5 +109,13 @@
     </main>
 </div>
 <script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+    document.getElementById('navBurger').addEventListener('click', function() {
+        var menu = document.getElementById('navMenu');
+        var open = menu.classList.toggle('open');
+        this.setAttribute('aria-expanded', open);
+        this.innerHTML = open ? '&#10005;' : '&#9776;';
+    });
+</script>
 </body>
 </html>

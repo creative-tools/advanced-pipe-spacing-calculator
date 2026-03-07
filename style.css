@@ -45,32 +45,84 @@ a:hover { color: #1a2e44; }
     min-width: 0;
 }
 
-/* ── NAV SPACING ──────────────────────────────── */
+/* ── NAV ──────────────────────────────────────── */
 .site-header nav {
     display: flex;
-    gap: 16px;
     align-items: center;
     flex-shrink: 0;
 }
 
+/* Desktop: links visible, burger hidden */
+.nav-menu {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.nav-burger {
+    display: none;
+    background: #1a6faa;
+    border: 2px solid #e67e22;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 5px 10px;
+    line-height: 1;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.nav-burger:hover {
+    background: #e67e22;
+}
+
 /* ── RESPONSIVE HEADER ────────────────────────── */
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .site-header {
         padding: 14px 16px;
+        flex-wrap: wrap;
+        gap: 0;
     }
 
     .site-header h1 {
         font-size: 1.15em;
     }
 
-    .site-header .sub-title {
-        display: none;
+    /* Mobile: show burger, hide links */
+    .nav-burger {
+        display: block;
     }
 
-    .site-header .header-nav {
-        font-size: 0.85em;
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        width: 100%;
+        background: #1a2e44;
+        border-top: 1px solid #2e4a66;
+        margin-top: 10px;
+        padding: 8px 0;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu .header-nav {
+        padding: 10px 16px;
+        width: 100%;
+        border-bottom: 1px solid #2e4a66;
+        font-size: 0.95em;
+    }
+
+    .nav-menu .header-nav:last-child {
+        border-bottom: none;
     }
 }
+
+
 
 /* ── AD CONTAINER (ready for AdSense) ─────────── */
 .adsense-container {

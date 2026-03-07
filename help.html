@@ -25,8 +25,14 @@
                     <p class="sub-title">for Piping Engineers</p>
                 </div>
             <nav>
-                <a href="index.html" class="header-nav">← Calculator</a>
-                <a href="about.html" class="header-nav">About</a>
+                <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
+                    &#9776;
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <!-- help.html -->
+                    <a href="index.html" class="header-nav">Calculator</a>
+                    <a href="about.html" class="header-nav">About</a>
+                </div>
             </nav>
             </header>
 
@@ -190,5 +196,13 @@
             </div>
         </aside> -->
     </div>
+    <script>
+    document.getElementById('navBurger').addEventListener('click', function() {
+        var menu = document.getElementById('navMenu');
+        var open = menu.classList.toggle('open');
+        this.setAttribute('aria-expanded', open);
+        this.innerHTML = open ? '&#10005;' : '&#9776;';
+    });
+    </script>    
 </body>
 </html>
