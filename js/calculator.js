@@ -194,8 +194,14 @@ function updateResult() {
 window.addEventListener('DOMContentLoaded', () => {
     
     
+    // // Listeners for Settings
+    // document.getElementById("gap").oninput = updateResult;
+    
     // Listeners for Settings
-    document.getElementById("gap").oninput = updateResult;
+    document.getElementById("gap").addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        updateResult();
+    });
     
     // Listener for Radio Buttons
     document.querySelectorAll('input[name="calcMode"]').forEach(radio => {
