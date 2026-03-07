@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.pipespacingcalculator.com/about.html" />
+    <title>About – Advanced Pipe Spacing Calculator</title>
+    <meta name="description" content="About the Advanced Pipe Spacing Calculator — a free engineering tool built by a piping engineer for piping engineers. Learn about its purpose, methodology, and the problem it solves.">
+    <link rel="icon" type="image/png" href="img/favicon/favicon.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" sizes="any"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-layout-wrapper">
+    <main class="calculator-content">
+
+        <!-- ═══ HEADER ═══ -->
+        <header class="site-header">
+            <div>
+                <h1>Advanced Pipe Spacing Calculator</h1>
+                <p class="sub-title">for Piping Engineers</p>
+            </div>
+        <nav>
+            <a href="index.html" class="header-nav">← Calculator</a>
+            <a href="help.html" class="header-nav">Help</a>
+        </nav>
+        </header>
+
+        <!-- ═══ CONTENT ═══ -->
+        <div class="privacy-main">
+
+            <h1 class="privacy-page-title">About This Tool</h1>
+
+            <!-- ── WHAT IS IT ── -->
+            <section class="privacy-section">
+                <h2>What Is the Advanced Pipe Spacing Calculator?</h2>
+                <p>The Advanced Pipe Spacing Calculator is a free, browser-based engineering tool designed to help piping engineers and plant designers determine the minimum center-to-center (C2C) spacing between parallel pipelines. It handles the tedious dimensional look-ups and case comparisons that engineers would otherwise perform manually — and delivers results instantly, without any installation or login required.</p>
+                <p>The tool supports configurations of multiple pipelines simultaneously, accounts for pipe OD, flange OD, insulation thickness, and design gap requirements, and outputs results rounded up to the nearest 5 mm — consistent with standard engineering practice.</p>
+
+                <div class="privacy-highlight-box">
+                    <p>All calculations run entirely in your browser. No data you enter is ever sent to a server, stored, or shared. The tool works offline once loaded.</p>
+                </div>
+            </section>
+
+            <!-- ── THE PROBLEM ── -->
+            <section class="privacy-section">
+                <h2>The Engineering Problem It Solves</h2>
+                <p>Determining pipe spacing is a routine but error-prone task in plant and process piping design. It sits at the intersection of multiple disciplines: the piping engineer must account for pipe and flange geometry from dimensional standards, insulation requirements, project-specific minimum gap requirements, and the spatial arrangement of adjacent lines — all while ensuring no physical interference exists between components.</p>
+                <p>In practice, this is often done using spreadsheets built from scratch, pen and paper estimates, or draft drawings — each of which costs time and carries its own risk of error. Mistakes in pipe spacing lead to clashes identified late in detailed engineering, resulting in costly rework and schedule delays.</p>
+                <p>This calculator standardizes and automates that process. By pulling pipe and flange OD data directly from industry-standard dimensional tables and applying a consistent, documented calculation method, it reduces the likelihood of manual error and speeds up the layout phase of a project.</p>
+            </section>
+
+            <!-- ── METHODOLOGY ── -->
+            <section class="privacy-section">
+                <h2>Calculation Methodology</h2>
+                <p>The core assumption of this tool is a <strong>staggered flange arrangement</strong> — the standard layout used in most process piping installations, where flanges on adjacent lines are offset longitudinally so they do not sit side-by-side in plan view. This allows the limiting case to be evaluated as a pipe body on one side facing a flange on the other, rather than flange-to-flange.</p>
+                <p>For each adjacent pipeline pair, two cases are evaluated: the radius of the first pipe plus its insulation against the flange radius of the second pipe plus its insulation, and vice versa. The minimum design gap is added to both. The larger of the two results governs, and the final value is rounded up to the nearest 5 mm. This method is consistent with common practice in the oil &amp; gas, petrochemical, and process industries.</p>
+                <p>A secondary mode — <strong>Pipe-to-Pipe</strong> — is also available for situations where flanges are not a factor, calculating spacing based purely on pipe OD and insulation thickness.</p>
+                <p>Pipe and flange dimensional data is sourced from industry-standard tables for carbon and stainless steel piping, covering a wide range of nominal pipe sizes and pressure classes.</p>
+            </section>
+
+            <!-- ── WHO BUILT IT ── -->
+            <section class="privacy-section">
+                <h2>Who Built It</h2>
+                <p>This tool was developed by an engineer with several years of hands-on experience in piping engineering, working across projects in the process and energy industries. The motivation was simple: this type of calculation gets done repeatedly across projects, often re-invented each time in a new spreadsheet, with no consistent method or dimensional reference.</p>
+                <p>The goal was to build something lightweight, accurate, and immediately useful — a tool that any piping engineer could open on any device, run a calculation in under a minute, and export the result in a format usable in a report or drawing package. No account, no installation, no paywalls.</p>
+                <p>The tool is provided free of charge and is maintained on a best-effort basis.</p>
+            </section>
+
+            <!-- ── OUTPUTS ── -->
+            <section class="privacy-section">
+                <h2>Outputs and Export Features</h2>
+                <p>Beyond the on-screen results, the calculator supports two export formats designed to integrate directly into engineering workflows:</p>
+                <ul>
+                    <li><strong>DXF Export (R12, metric):</strong> Generates a side-view drawing of the piping arrangement with each geometry type on its own named layer. The drawing can be opened in any CAD application that reads DXF. Hidden "helper" layers allow visual verification of gap compliance between adjacent components.</li>
+                    <li><strong>PDF Report:</strong> Exports a compact, formatted report summarising the pipeline inputs and C2C results — suitable for reference and verification of results.</li>
+                </ul>
+                <p>Pipeline arrangements can also be saved and reloaded as <code>.json</code> files, making it straightforward to return to a previous arrangement or share a configuration with a colleague.</p>
+            </section>
+
+            <!-- ── LIMITATIONS ── -->
+            <section class="privacy-section">
+                <h2>Limitations and Intended Use</h2>
+                <p>This tool is intended as a <strong>design aid and preliminary engineering tool</strong>, not a substitute for formal engineering judgment or project-specific standards review. Results should always be verified by a qualified engineer against the applicable piping code, project specifications, and layout requirements before being used for fabrication, procurement, or construction.</p>
+                <p>The staggered flange assumption may not be valid in all configurations. Where flanges are not staggered, or other factors introduce additional space requirements, the calculator's output will need to be supplemented with additional checks.</p>
+                <p>Pipe and flange dimensions in the database reflect standard sizes for carbon and stainless steel piping. Non-standard or proprietary sizes are not included. Users should always verify that the tool's dimensional data matches their applicable standard before relying on results.</p>
+            </section>
+
+            <!-- ── CONTACT ── -->
+            <section class="privacy-section">
+                <h2>Contact</h2>
+                <p>For feedback, bug reports, or suggestions for additional features, you are welcome to reach out via the contact address listed on the <a href="privacy.html">Privacy Policy</a> page. All feedback is read and considered, though response times may vary given that this is an independent project maintained outside of regular working hours.</p>
+            </section>
+
+        </div>
+
+        <!-- ═══ FOOTER ═══ -->
+        <div class="site-footer-bar">
+            &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a>
+        </div>
+
+    </main>
+</div>
+<script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

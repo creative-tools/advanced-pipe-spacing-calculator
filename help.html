@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.pipespacingcalculator.com/help.html" />
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7041555737799308" crossorigin="anonymous"></script> -->
-    <title>User guide for Advanced Pipe Spacing Calculator</title>
+    <title>User Guide – Advanced Pipe Spacing Calculator</title>
     <meta name="description" content="User guide and FAQ for the Advanced Pipe Spacing Calculator, for Piping Engineers. Calculate minimum Center-to-Center distance for multiple parallel pipelines.">
     <link rel="icon" type="image/png" href="img/favicon/favicon.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" sizes="any"/>
@@ -22,42 +22,42 @@
             <header class="site-header">
                 <div>
                     <h1>Advanced Pipe Spacing Calculator</h1>
-                    <p class="sub-title">User Guide</p>
+                    <p class="sub-title">for Piping Engineers</p>
                 </div>
-                <nav>
-                    <a href="index.html" class="header-nav">← Calculator</a>
-                </nav>
+            <nav>
+                <a href="index.html" class="header-nav">← Calculator</a>
+                <a href="about.html" class="header-nav">About</a>
+            </nav>
             </header>
 
+            <!-- ═══ CALCULATION METHOD ═══ -->
             <section id="scope-and-logic">
-                <h2 class="section-title">Scope and Logic</h2>
-                <p>The Advanced Pipe Spacing Calculator is a tool designed for Piping Engineers. It calculates the minimum <strong>Center-to-Center (C2C)</strong> distance in mm required between multiple parallel pipelines to prevent physical interference and maintain design clearances as dictated by project specifications and design requirements.</p>
+                <h2 class="section-title">Calculation Method</h2>
 
-                <ul>
-                    <li><strong>Staggered Flange Assumption:</strong> The calculation logic assumes that flanges on adjacent lines are longitudinally staggered. The C2C distance is determined by the maximum distance required to clear the <em>Pipe-to-Flange</em> profile of both lines, while taking insulation thickness into consideration.</li>
-                    <figure>
-                        <img src="img/staggered-flanges-400x200.webp" alt="staggered flanges arrangement" width="400" height="200">
-                        <figcaption>Plan view of pipelines with staggered flanges</figcaption>
-                    </figure>
+                <p>The calculator determines the minimum <strong>Center-to-Center (C2C)</strong> distance in mm between each pair of adjacent pipelines. It assumes a <strong>staggered flange arrangement</strong> — flanges on adjacent lines are longitudinally offset, so the governing case is always pipe body on one side against a flange on the other.</p>
 
-                    <li><strong>Calculation Formula:</strong> For each pipeline pair, the calculator performs two case studies:
-                        <div class="formula-container">
-                            <span class="formula-label">Center-to-Center Calc - Case 1:</span>
-                            $$ \text{C2C}_1 = (\text{Rad}_{\text{pipe}_1} + \text{Insul}_{\text{pipe}_1}) + (\text{Rad}_{\text{flange}_2} + \text{Insul}_{\text{flange}_2}) + \text{Gap} $$
+                <figure>
+                    <img src="img/staggered-flanges-400x200.webp" alt="staggered flanges arrangement" width="400" height="200">
+                    <figcaption>Plan view of pipelines with staggered flanges</figcaption>
+                </figure>
 
-                            <span class="formula-label">Center-to-Center Calc - Case 2:</span>
-                            $$ \text{C2C}_2 = (\text{Rad}_{\text{pipe}_2} + \text{Insul}_{\text{pipe}_2}) + (\text{Rad}_{\text{flange}_1} + \text{Insul}_{\text{flange}_1}) + \text{Gap} $$
+                <p>For each pipeline pair, two cases are evaluated and the larger result governs. Results are rounded up to the nearest 5 mm.</p>
 
-                            <span class="formula-label">Final Result:</span>
-                            $$ \text{if } \text{C2C}_1 \ge \text{C2C}_2 \text{ ,then } \text{C2C} = \text{C2C}_1 $$
-                            $$ \text{if } \text{C2C}_1 < \text{C2C}_2 \text{ ,then } \text{C2C} = \text{C2C}_2 $$
-                        </div>
-                        the calculator compares the two values, selects the larger value and displays it as the Center to Center distance between the pipeline pair. Results are rounded up to the nearest 5mm.
-                    </li>
-                    <li><strong>Pipe and Flange Diameters:</strong> Data based on industry-standard dimensions for carbon and stainless steel piping.</li>
-                </ul>
+                <div class="formula-container">
+                    <span class="formula-label">Case 1:</span>
+                    $$ \text{C2C}_1 = (\text{Rad}_{\text{pipe}_1} + \text{Insul}_{\text{pipe}_1}) + (\text{Rad}_{\text{flange}_2} + \text{Insul}_{\text{flange}_2}) + \text{Gap} $$
+
+                    <span class="formula-label">Case 2:</span>
+                    $$ \text{C2C}_2 = (\text{Rad}_{\text{pipe}_2} + \text{Insul}_{\text{pipe}_2}) + (\text{Rad}_{\text{flange}_1} + \text{Insul}_{\text{flange}_1}) + \text{Gap} $$
+
+                    <span class="formula-label">Final Result:</span>
+                    $$ \text{C2C} = \max(\text{C2C}_1,\ \text{C2C}_2) \rightarrow \text{rounded up to nearest 5 mm} $$
+                </div>
+
+                <p>Pipe and flange OD data is sourced from industry-standard dimensional tables for carbon and stainless steel piping. For background on the engineering problem this tool addresses and its intended use, see the <a href="about.html">About</a> page.</p>
             </section>
 
+            <!-- ═══ USER INTERFACE ═══ -->
             <section id="user-interface">
                 <h2 class="section-title">User Interface</h2>
 
@@ -83,8 +83,8 @@
                     <li><strong>Pipeline Name:</strong> Optional label used in DXF drawings and PDF reports.</li>
                     <li><strong>NPS:</strong> Select the nominal pipe size to automatically assign the correct Pipe OD from the database.</li>
                     <li><strong>Class:</strong> Select the pressure rating to automatically assign the flange OD from the database. Classes <i>Axxx</i> refer to Series A flanges, while <i>Bxxx</i> refer to Series B flanges.</li>
-                    <li><strong>Insul (mm):</strong> Enter the thickness of insulation for the pipe, if applicable, in millimeters.</li>
-                    <li><strong>Flg Insul (mm):</strong> Enter the thickness of insulation for the flange, if applicable, in millimeters.</li>
+                    <li><strong>Insul (mm):</strong> Insulation thickness on the pipe body, in millimeters.</li>
+                    <li><strong>Flg Insul (mm):</strong> Insulation thickness on the flange, in millimeters.</li>
                     <li><strong>BOP (mm):</strong> Used in DXF drawings and PDF reports. By default, pipelines are drawn at BOP +0. If a non-zero value is entered, the BOP will be shifted by the specified amount relative to the rest of the pipelines.</li>
                 </ul>
 
@@ -94,23 +94,24 @@
                     <li><strong>Export PDF:</strong> Exports a report in PDF format, showing the current pipeline setup and respective results.</li>
                     <li><strong>Save Setup:</strong> Saves your current pipeline arrangement locally as a <code>.json</code> file.</li>
                     <li><strong>Load Setup:</strong> Loads a saved pipeline arrangement from a <code>.json</code> file.</li>
-                    <li><strong>+ Add Pipe:</strong> Inserts a new pipeline below the selected pipeline</li>
-                    <li><strong>Remove:</strong> Delete the selected pipeline from the current arrangement</li>
+                    <li><strong>+ Add Pipe:</strong> Inserts a new pipeline below the selected pipeline.</li>
+                    <li><strong>Remove:</strong> Deletes the selected pipeline from the current arrangement.</li>
                 </ul>
 
                 <h3>Total Required Space</h3>
                 <p>The Total Required Space is calculated by adding the radii and insulation thicknesses of the first and last pipes to the sum of all center-to-center distances within the current piping arrangement. The figure below illustrates this logic.</p>
                 <figure>
-                    <img src="img/total-space_650x350.webp" alt="staggered flanges arrangement" width="650" height="350">
+                    <img src="img/total-space_650x350.webp" alt="Total space calculation" width="650" height="350">
                     <figcaption>Calculation of total space required for piping arrangement</figcaption>
                 </figure>
             </section>
 
+            <!-- ═══ DXF DRAWING ═══ -->
             <section id="dxf-drawing">
                 <h2 class="section-title">DXF Drawing</h2>
 
-                <h3>DXF Export Functionality</h3>
-                <p>When you click the Export DXF button, the calculator generates a drawing based on the current piping arrangement, settings, and numerical results. The generated geometries are automatically assigned to specific layers with the following default visibility settings:</p>
+                <h3>Layer Structure</h3>
+                <p>The exported DXF assigns each geometry type to its own named layer. Default visibility settings are:</p>
                 <ul>
                     <li><strong>CENTERLINE</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
                     <li><strong>FLANGE</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
@@ -121,38 +122,36 @@
                 </ul>
 
                 <h3>Layer Visibility and Verification</h3>
-                <p>Using the default setup the geometry that is displayed is a section view of the pipeline <i>(see Fig.1)</i>. The hidden layers however can display all the relevant geometries of the respective elements, if their visibility is turned on <i>(see Fig.2)</i></p>
+                <p>With default layers on, the drawing shows a clean section view of the arrangement <i>(Fig. 1)</i>. Turning on the hidden layers reveals the full flange and insulation profiles <i>(Fig. 2)</i>, which can be used to verify that the specified gap is maintained between adjacent components <i>(Fig. 3 &amp; 4)</i>.</p>
 
                 <div>
                     <figure>
                         <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
-                        <figcaption>Fig.1 pipe drawing with default layers on</figcaption>
+                        <figcaption>Fig.1 Default layers — section view</figcaption>
                     </figure>
                     <figure>
                         <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
-                        <figcaption>Fig.2 pipe drawing with hidden layers on</figcaption>
+                        <figcaption>Fig.2 All layers on — full geometry visible</figcaption>
                     </figure>
                 </div>
-
-                <p>The purpose of these hidden "helper" layers is to allow the user to visually verify the calculator's results and ensure that the Gap specified in the global settings is honored.</p>
-                <p>For instance, the default drawing only displays the primary geometries (see Fig. 3). By enabling the hidden helper layers, you can easily verify that the gap is correct by measuring against the outermost edges of the flanges and insulation profiles (see Fig. 4).</p>
 
                 <div>
                     <figure>
                         <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
-                        <figcaption>Fig.3 piping arrangement with center to center distance</figcaption>
+                        <figcaption>Fig.3 Arrangement with C2C distance labelled</figcaption>
                     </figure>
                     <figure>
                         <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
-                        <figcaption>Fig.4 verification of minimum gap requirement with helper layers</figcaption>
+                        <figcaption>Fig.4 Helper layers on — gap verification</figcaption>
                     </figure>
                 </div>
 
                 <div class="intro-description">
-                    <p><strong style="color: #e67e22;">NOTICE:</strong> Enabling the hidden 'helper' layers will often result in a visual overlap of graphical elements (e.g., flanges of adjacent pipelines). However, please remember that we are using a <b>staggered flange setup</b>. Because these flanges are on different planes along the Z-axis, they do not actually clash.</p>
+                    <p><strong style="color: #e67e22;">NOTICE:</strong> Enabling the hidden helper layers will often result in a visual overlap of flange profiles on adjacent pipelines. This is expected — the staggered flange setup means those flanges are on different planes along the Z-axis and do not actually clash.</p>
                 </div>
             </section>
 
+            <!-- ═══ ABBREVIATIONS ═══ -->
             <section id="abbreviations">
                 <h2 class="section-title">Abbreviations</h2>
                 <ul>
@@ -178,9 +177,7 @@
                     The author shall not be liable for any damages resulting from the use of this tool.
                 </div>
                 <div class="site-footer-bar">
-                    &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp;
-                    <a href="index.html">Calculator</a> &nbsp;|&nbsp;
-                    <a href="privacy.html">Privacy Policy</a>
+                   &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a>
                 </div>
             </footer>
 
