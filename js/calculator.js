@@ -37,7 +37,7 @@ function createPipeUI(insertAfterRow = null) {
             <label>Flg OD:</label>
             <span class="f_od_disp"></span>
             
-            <label>Insul<br>(mm):</label> 
+            <!-- <label>Insul<br>(mm):</label> 
             <input type="number" class="p_ins" value="0" min="0">
             
             <label>Flg Insul<br>(mm):</label> 
@@ -46,6 +46,17 @@ function createPipeUI(insertAfterRow = null) {
             <label>BOP<br>(mm):</label>
             <div style="display: flex; gap: 5px; align-items: center;">
                 <input type="number" class="bop_val" value="0" step="1" style="width: 100%;">
+            </div> -->
+            
+            <label>Insul<br>(mm):</label> 
+            <input type="text" inputmode="numeric" pattern="[0-9]*" class="p_ins" value="0">
+            
+            <label>Flg Insul<br>(mm):</label> 
+            <input type="text" inputmode="numeric" pattern="[0-9]*" class="f_ins" value="0">
+            
+            <label>BOP<br>(mm):</label>
+            <div style="display: flex; gap: 5px; align-items: center;">
+                <input type="text" inputmode="text" pattern="-?[0-9]*" class="bop_val" value="0" style="width: 100%;">
             </div>
             
             <div class="footer-row">
@@ -86,14 +97,40 @@ function createPipeUI(insertAfterRow = null) {
         row.querySelector(".f_od_disp").innerText = fOD ? `${fOD}mm` : "(-)";
     };
 
+    // row.querySelectorAll("select, input").forEach(el => {
+    //     el.addEventListener("change", () => {
+    //         updateInfo();
+    //         updateResult();
+    //     });
+    //     el.addEventListener("keyup", updateResult);
+    // });
+    
     row.querySelectorAll("select, input").forEach(el => {
-        el.addEventListener("change", () => {
-            updateInfo();
+    el.addEventListener("change", () => {
+        updateInfo();
+        updateResult();
+    });
+    el.addEventListener("keyup", updateResult);
+});
+
+    // Sanitize numeric-only fields: no decimals, no negatives, blank → 0
+    row.querySelectorAll(".p_ins, .f_ins, .bop_val").forEach(el => {
+        el.addEventListener("input", function () {
+            if (this.classList.contains("bop_val")) {
+                this.value = this.value.replace(/[^0-9-]/g, '').replace(/(?!^)-/g, '');
+            } else {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
             updateResult();
         });
-        el.addEventListener("keyup", updateResult);
+        el.addEventListener("blur", function () {
+            if (this.value === '') {
+                this.value = '0';
+                updateResult();
+            }
+        });
     });
-    
+//     END OF NEW CODE
 
     row.querySelector(".remove-btn").addEventListener("click", () => {
         if (document.querySelectorAll(".pipe-row").length > 2) {
