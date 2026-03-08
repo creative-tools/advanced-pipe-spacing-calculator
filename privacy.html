@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="https://www.pipespacingcalculator.com/privacy.html" />
   <title>Privacy Policy – Advanced Pipe Spacing Calculator</title>
   <meta name="description" content="Privacy Policy for the Advanced Pipe Spacing Calculator. Learn how we handle data, analytics, and advertising cookies.">
   <link rel="icon" type="image/png" href="img/favicon/favicon.png" sizes="96x96" />
@@ -13,22 +14,20 @@
 <div class="main-layout-wrapper">
   <main class="calculator-content">
 
-    <!-- ═══ HEADER ═══ -->
     <header class="site-header">
-      <div>
-        <h1>Advanced Pipe Spacing Calculator</h1>
-        <p class="sub-title">for Piping Engineers</p>
-      </div>
-    <nav>
-        <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
-            &#9776;
-        </button>
-        <div class="nav-menu" id="navMenu">
-            <!-- privacy.html -->
-            <a href="index.html" class="header-nav">Calculator</a>
-            <a href="help.html" class="header-nav">Help</a>
+        <div>
+            <h1>Advanced Pipe Spacing Calculator</h1>
+            <p class="sub-title">for Piping Engineers</p>
         </div>
-    </nav>
+        <nav>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="header-nav">Calculator</a>
+                <a href="help.html" class="header-nav">Help</a>
+                <a href="about.html" class="header-nav">About</a>
+            </div>
+        </nav>
     </header>
 
     <!-- ═══ CONTENT ═══ -->
@@ -105,34 +104,50 @@
       </section>
     </div>
 
-    <!-- ═══ FOOTER ═══ -->
     <div class="site-footer-bar">
       &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp; Privacy Policy
     </div>
 
   </main>
 </div>
-<script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-  (function() {
-    var u = 'info';
-    var d = ['pipespacingcalculator', 'com'].join('.');
-    var el = document.getElementById('contact-email');
-    if (el) {
-      var a = document.createElement('a');
-      a.href = ['mai', 'lto:', u, '@', d].join('');
-      a.textContent = u + '@' + d;
-      el.replaceWith(a);
-    }
-  })();
-</script>
-<script>
-    document.getElementById('navBurger').addEventListener('click', function() {
-        var menu = document.getElementById('navMenu');
-        var open = menu.classList.toggle('open');
-        this.setAttribute('aria-expanded', open);
-        this.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-</script>
+    <script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+      (function() {
+        var u = 'info';
+        var d = ['pipespacingcalculator', 'com'].join('.');
+        var el = document.getElementById('contact-email');
+        if (el) {
+          var a = document.createElement('a');
+          a.href = ['mai', 'lto:', u, '@', d].join('');
+          a.textContent = u + '@' + d;
+          el.replaceWith(a);
+        }
+      })();
+    </script>
+    <script>
+        (function() {
+            var burger  = document.getElementById('navBurger');
+            var menu    = document.getElementById('navMenu');
+            var overlay = document.getElementById('navOverlay');
+    
+            function openMenu() {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                burger.setAttribute('aria-expanded', 'true');
+                burger.innerHTML = '&#10005;';
+            }
+            function closeMenu() {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.innerHTML = '&#9776;';
+            }
+    
+            burger.addEventListener('click', function() {
+                menu.classList.contains('open') ? closeMenu() : openMenu();
+            });
+            overlay.addEventListener('click', closeMenu);
+        })();
+    </script>
 </body>
 </html>

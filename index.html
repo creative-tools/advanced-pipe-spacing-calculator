@@ -16,15 +16,18 @@
 <body>
     <div class="main-layout-wrapper">
         <main class="calculator-content">
-
-            <!-- ═══ HEADER ═══ -->
             <header class="site-header">
                 <div>
                     <h1>Advanced Pipe Spacing Calculator</h1>
                     <p class="sub-title">for Piping Engineers</p>
                 </div>
                 <nav>
-                    <a href="help.html" class="header-nav">Help</a>
+                    <div class="nav-overlay" id="navOverlay"></div>
+                    <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+                    <div class="nav-menu" id="navMenu">
+                        <a href="help.html" class="header-nav">Help</a>
+                        <a href="about.html" class="header-nav">About</a>
+                    </div>
                 </nav>
             </header>
 
@@ -65,8 +68,6 @@
             <h3>Pipeline Data</h3>
             <div id="pipesContainer"></div>
             <div id="totalSpacingDisplay"></div>
-
-            <!-- ═══ FOOTER ═══ -->
             <footer>
                 <div class="footer-text-block footer-border-top">
                     <strong>Disclaimer:</strong> This tool is provided for informational and
@@ -98,5 +99,30 @@
             </div>
         </aside> -->
     </div>
+    <script>
+        (function() {
+            var burger  = document.getElementById('navBurger');
+            var menu    = document.getElementById('navMenu');
+            var overlay = document.getElementById('navOverlay');
+    
+            function openMenu() {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                burger.setAttribute('aria-expanded', 'true');
+                burger.innerHTML = '&#10005;';
+            }
+            function closeMenu() {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.innerHTML = '&#9776;';
+            }
+    
+            burger.addEventListener('click', function() {
+                menu.classList.contains('open') ? closeMenu() : openMenu();
+            });
+            overlay.addEventListener('click', closeMenu);
+        })();
+    </script>   
 </body>
 </html>

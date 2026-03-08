@@ -13,24 +13,19 @@
 <body>
 <div class="main-layout-wrapper">
     <main class="calculator-content">
-
-        <!-- ═══ HEADER ═══ -->
         <header class="site-header">
             <div>
                 <h1>Advanced Pipe Spacing Calculator</h1>
                 <p class="sub-title">for Piping Engineers</p>
             </div>
-        <nav>
-            <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
-                &#9776;
-            </button>
-            <div class="nav-menu" id="navMenu">
-
-                <!-- about.html -->
-                <a href="index.html" class="header-nav">Calculator</a>
-                <a href="help.html" class="header-nav">Help</a>
-            </div>
-        </nav>
+            <nav>
+                <div class="nav-overlay" id="navOverlay"></div>
+                <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="header-nav">Calculator</a>
+                    <a href="help.html" class="header-nav">Help</a>
+                </div>
+            </nav>
         </header>
 
         <!-- ═══ CONTENT ═══ -->
@@ -100,21 +95,37 @@
 
         </div>
 
-        <!-- ═══ FOOTER ═══ -->
         <div class="site-footer-bar">
             &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a>
         </div>
 
     </main>
 </div>
-<script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-    document.getElementById('navBurger').addEventListener('click', function() {
-        var menu = document.getElementById('navMenu');
-        var open = menu.classList.toggle('open');
-        this.setAttribute('aria-expanded', open);
-        this.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-</script>
+    <script data-goatcounter="https://creativetools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        (function() {
+            var burger  = document.getElementById('navBurger');
+            var menu    = document.getElementById('navMenu');
+            var overlay = document.getElementById('navOverlay');
+    
+            function openMenu() {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                burger.setAttribute('aria-expanded', 'true');
+                burger.innerHTML = '&#10005;';
+            }
+            function closeMenu() {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.innerHTML = '&#9776;';
+            }
+    
+            burger.addEventListener('click', function() {
+                menu.classList.contains('open') ? closeMenu() : openMenu();
+            });
+            overlay.addEventListener('click', closeMenu);
+        })();
+    </script>
 </body>
 </html>

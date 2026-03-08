@@ -24,154 +24,155 @@
                     <h1>Advanced Pipe Spacing Calculator</h1>
                     <p class="sub-title">for Piping Engineers</p>
                 </div>
-            <nav>
-                <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
-                    &#9776;
-                </button>
-                <div class="nav-menu" id="navMenu">
-                    <!-- help.html -->
-                    <a href="index.html" class="header-nav">Calculator</a>
-                    <a href="about.html" class="header-nav">About</a>
-                </div>
-            </nav>
+                <nav>
+                    <div class="nav-overlay" id="navOverlay"></div>
+                    <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+                    <div class="nav-menu" id="navMenu">
+                        <a href="index.html" class="header-nav">Calculator</a>
+                        <a href="about.html" class="header-nav">About</a>
+                    </div>
+                </nav>
             </header>
-
-            <!-- ═══ CALCULATION METHOD ═══ -->
-            <section id="scope-and-logic">
-                <h2 class="section-title">Calculation Method</h2>
-
-                <p>The calculator determines the minimum <strong>Center-to-Center (C2C)</strong> distance in mm between each pair of adjacent pipelines. It assumes a <strong>staggered flange arrangement</strong> — flanges on adjacent lines are longitudinally offset, so the governing case is always pipe body on one side against a flange on the other.</p>
-
-                <figure>
-                    <img src="img/staggered-flanges-400x200.webp" alt="staggered flanges arrangement" width="400" height="200">
-                    <figcaption>Plan view of pipelines with staggered flanges</figcaption>
-                </figure>
-
-                <p>For each pipeline pair, two cases are evaluated and the larger result governs. Results are rounded up to the nearest 5 mm.</p>
-
-                <div class="formula-container">
-                    <span class="formula-label">Case 1:</span>
-                    $$ \text{C2C}_1 = (\text{Rad}_{\text{pipe}_1} + \text{Insul}_{\text{pipe}_1}) + (\text{Rad}_{\text{flange}_2} + \text{Insul}_{\text{flange}_2}) + \text{Gap} $$
-
-                    <span class="formula-label">Case 2:</span>
-                    $$ \text{C2C}_2 = (\text{Rad}_{\text{pipe}_2} + \text{Insul}_{\text{pipe}_2}) + (\text{Rad}_{\text{flange}_1} + \text{Insul}_{\text{flange}_1}) + \text{Gap} $$
-
-                    <span class="formula-label">Final Result:</span>
-                    $$ \text{C2C} = \max(\text{C2C}_1,\ \text{C2C}_2) \rightarrow \text{rounded up to nearest 5 mm} $$
-                </div>
-
-                <p>Pipe and flange OD data is sourced from industry-standard dimensional tables for carbon and stainless steel piping. For background on the engineering problem this tool addresses and its intended use, see the <a href="about.html">About</a> page.</p>
-            </section>
-
-            <!-- ═══ USER INTERFACE ═══ -->
-            <section id="user-interface">
-                <h2 class="section-title">User Interface</h2>
-
-                <h3>Global Settings</h3>
-                <ul>
-                    <li><strong>Gap (mm):</strong> The minimum required physical clearance between the widest points of adjacent components (insulation or flange).</li>
-                    <li><strong>Calculation Logic:</strong>
-                        <ul>
-                            <li>
-                                <em>Pipe-to-Flange:</em> Factors in flange diameter and insulation thickness when calculating spacing.
-                                <img src="img/pipe2flange.webp" alt="Pipe to Flange spacing" width="400" height="300">
-                            </li>
-                            <li>
-                                <em>Pipe-to-Pipe:</em> Flanges are omitted; calculates spacing based strictly on pipe OD and insulation thickness.
-                                <img src="img/pipe2pipe.webp" alt="Pipe to Pipe spacing" width="400" height="300">
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <h3>Pipeline Parameters</h3>
-                <ul>
-                    <li><strong>Pipeline Name:</strong> Optional label used in DXF drawings and PDF reports.</li>
-                    <li><strong>NPS:</strong> Select the nominal pipe size to automatically assign the correct Pipe OD from the database.</li>
-                    <li><strong>Class:</strong> Select the pressure rating to automatically assign the flange OD from the database. Classes <i>Axxx</i> refer to Series A flanges, while <i>Bxxx</i> refer to Series B flanges.</li>
-                    <li><strong>Insul (mm):</strong> Insulation thickness on the pipe body, in millimeters.</li>
-                    <li><strong>Flg Insul (mm):</strong> Insulation thickness on the flange, in millimeters.</li>
-                    <li><strong>BOP (mm):</strong> Used in DXF drawings and PDF reports. By default, pipelines are drawn at BOP +0. If a non-zero value is entered, the BOP will be shifted by the specified amount relative to the rest of the pipelines.</li>
-                </ul>
-
-                <h3>Functions</h3>
-                <ul>
-                    <li><strong>Export DXF:</strong> Exports a DXF (version R12, metric, mm) side view drawing. Elements are organized on dedicated layers.</li>
-                    <li><strong>Export PDF:</strong> Exports a report in PDF format, showing the current pipeline setup and respective results.</li>
-                    <li><strong>Save Setup:</strong> Saves your current pipeline arrangement locally as a <code>.json</code> file.</li>
-                    <li><strong>Load Setup:</strong> Loads a saved pipeline arrangement from a <code>.json</code> file.</li>
-                    <li><strong>+ Add Pipe:</strong> Inserts a new pipeline below the selected pipeline.</li>
-                    <li><strong>Remove:</strong> Deletes the selected pipeline from the current arrangement.</li>
-                </ul>
-
-                <h3>Total Required Space</h3>
-                <p>The Total Required Space is calculated by adding the radii and insulation thicknesses of the first and last pipes to the sum of all center-to-center distances within the current piping arrangement. The figure below illustrates this logic.</p>
-                <figure>
-                    <img src="img/total-space_650x350.webp" alt="Total space calculation" width="650" height="350">
-                    <figcaption>Calculation of total space required for piping arrangement</figcaption>
-                </figure>
-            </section>
-
-            <!-- ═══ DXF DRAWING ═══ -->
-            <section id="dxf-drawing">
-                <h2 class="section-title">DXF Drawing</h2>
-
-                <h3>Layer Structure</h3>
-                <p>The exported DXF assigns each geometry type to its own named layer. Default visibility settings are:</p>
-                <ul>
-                    <li><strong>CENTERLINE</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
-                    <li><strong>FLANGE</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
-                    <li><strong>FLANGE_INSULATION</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
-                    <li><strong>PIPE</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
-                    <li><strong>PIPE_INSULATION</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
-                    <li><strong>TEXT</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
-                </ul>
-
-                <h3>Layer Visibility and Verification</h3>
-                <p>With default layers on, the drawing shows a clean section view of the arrangement <i>(Fig. 1)</i>. Turning on the hidden layers reveals the full flange and insulation profiles <i>(Fig. 2)</i>, which can be used to verify that the specified gap is maintained between adjacent components <i>(Fig. 3 &amp; 4)</i>.</p>
-
-                <div>
+            
+            
+            <div class="privacy-main">
+                <h1 class="privacy-page-title">User Guide</h1>
+                
+                <!-- ═══ CALCULATION METHOD ═══ -->
+                <section id="scope-and-logic">
+                    <h2 class="section-title">Calculation Method</h2>
+    
+                    <p>The calculator determines the minimum <strong>Center-to-Center (C2C)</strong> distance in mm between each pair of adjacent pipelines. It assumes a <strong>staggered flange arrangement</strong> — flanges on adjacent lines are longitudinally offset, so the governing case is always pipe body on one side against a flange on the other.</p>
+    
                     <figure>
-                        <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
-                        <figcaption>Fig.1 Default layers — section view</figcaption>
+                        <img src="img/staggered-flanges-400x200.webp" alt="staggered flanges arrangement" width="400" height="200">
+                        <figcaption>Plan view of pipelines with staggered flanges</figcaption>
                     </figure>
+    
+                    <p>For each pipeline pair, two cases are evaluated and the larger result governs. Results are rounded up to the nearest 5 mm.</p>
+    
+                    <div class="formula-container">
+                        <span class="formula-label">Case 1:</span>
+                        $$ \text{C2C}_1 = (\text{Rad}_{\text{pipe}_1} + \text{Insul}_{\text{pipe}_1}) + (\text{Rad}_{\text{flange}_2} + \text{Insul}_{\text{flange}_2}) + \text{Gap} $$
+    
+                        <span class="formula-label">Case 2:</span>
+                        $$ \text{C2C}_2 = (\text{Rad}_{\text{pipe}_2} + \text{Insul}_{\text{pipe}_2}) + (\text{Rad}_{\text{flange}_1} + \text{Insul}_{\text{flange}_1}) + \text{Gap} $$
+    
+                        <span class="formula-label">Final Result:</span>
+                        $$ \text{C2C} = \max(\text{C2C}_1,\ \text{C2C}_2) \rightarrow \text{rounded up to nearest 5 mm} $$
+                    </div>
+    
+                    <p>Pipe and flange OD data is sourced from industry-standard dimensional tables for carbon and stainless steel piping. For background on the engineering problem this tool addresses and its intended use, see the <a href="about.html">About</a> page.</p>
+                </section>
+    
+                <!-- ═══ USER INTERFACE ═══ -->
+                <section id="user-interface">
+                    <h2 class="section-title">User Interface</h2>
+    
+                    <h3>Global Settings</h3>
+                    <ul>
+                        <li><strong>Gap (mm):</strong> The minimum required physical clearance between the widest points of adjacent components (insulation or flange).</li>
+                        <li><strong>Calculation Logic:</strong>
+                            <ul>
+                                <li>
+                                    <em>Pipe-to-Flange:</em> Factors in flange diameter and insulation thickness when calculating spacing.
+                                    <img src="img/pipe2flange.webp" alt="Pipe to Flange spacing" width="400" height="300">
+                                </li>
+                                <li>
+                                    <em>Pipe-to-Pipe:</em> Flanges are omitted; calculates spacing based strictly on pipe OD and insulation thickness.
+                                    <img src="img/pipe2pipe.webp" alt="Pipe to Pipe spacing" width="400" height="300">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+    
+                    <h3>Pipeline Parameters</h3>
+                    <ul>
+                        <li><strong>Pipeline Name:</strong> Optional label used in DXF drawings and PDF reports.</li>
+                        <li><strong>NPS:</strong> Select the nominal pipe size to automatically assign the correct Pipe OD from the database.</li>
+                        <li><strong>Class:</strong> Select the pressure rating to automatically assign the flange OD from the database. Classes <i>Axxx</i> refer to Series A flanges, while <i>Bxxx</i> refer to Series B flanges.</li>
+                        <li><strong>Insul (mm):</strong> Insulation thickness on the pipe body, in millimeters.</li>
+                        <li><strong>Flg Insul (mm):</strong> Insulation thickness on the flange, in millimeters.</li>
+                        <li><strong>BOP (mm):</strong> Used in DXF drawings and PDF reports. By default, pipelines are drawn at BOP +0. If a non-zero value is entered, the BOP will be shifted by the specified amount relative to the rest of the pipelines.</li>
+                    </ul>
+    
+                    <h3>Functions</h3>
+                    <ul>
+                        <li><strong>Export DXF:</strong> Exports a DXF (version R12, metric, mm) side view drawing. Elements are organized on dedicated layers.</li>
+                        <li><strong>Export PDF:</strong> Exports a report in PDF format, showing the current pipeline setup and respective results.</li>
+                        <li><strong>Save Setup:</strong> Saves your current pipeline arrangement locally as a <code>.json</code> file.</li>
+                        <li><strong>Load Setup:</strong> Loads a saved pipeline arrangement from a <code>.json</code> file.</li>
+                        <li><strong>+ Add Pipe:</strong> Inserts a new pipeline below the selected pipeline.</li>
+                        <li><strong>Remove:</strong> Deletes the selected pipeline from the current arrangement.</li>
+                    </ul>
+    
+                    <h3>Total Required Space</h3>
+                    <p>The Total Required Space is calculated by adding the radii and insulation thicknesses of the first and last pipes to the sum of all center-to-center distances within the current piping arrangement. The figure below illustrates this logic.</p>
                     <figure>
-                        <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
-                        <figcaption>Fig.2 All layers on — full geometry visible</figcaption>
+                        <img src="img/total-space_650x350.webp" alt="Total space calculation" width="650" height="350">
+                        <figcaption>Calculation of total space required for piping arrangement</figcaption>
                     </figure>
-                </div>
-
-                <div>
-                    <figure>
-                        <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
-                        <figcaption>Fig.3 Arrangement with C2C distance labelled</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
-                        <figcaption>Fig.4 Helper layers on — gap verification</figcaption>
-                    </figure>
-                </div>
-
-                <div class="intro-description">
-                    <p><strong style="color: #e67e22;">NOTICE:</strong> Enabling the hidden helper layers will often result in a visual overlap of flange profiles on adjacent pipelines. This is expected — the staggered flange setup means those flanges are on different planes along the Z-axis and do not actually clash.</p>
-                </div>
-            </section>
-
-            <!-- ═══ ABBREVIATIONS ═══ -->
-            <section id="abbreviations">
-                <h2 class="section-title">Abbreviations</h2>
-                <ul>
-                    <li><strong>NPS:</strong> Nominal Pipe Size</li>
-                    <li><strong>OD:</strong> Outside Diameter</li>
-                    <li><strong>Insul:</strong> Insulation thickness</li>
-                    <li><strong>Flg:</strong> Flange</li>
-                    <li><strong>BOP:</strong> Bottom of Pipe</li>
-                    <li><strong>Rad:</strong> Radius</li>
-                    <li><strong>C2C:</strong> Center to Center distance, in mm</li>
-                </ul>
-            </section>
-
-            <!-- ═══ FOOTER ═══ -->
+                </section>
+    
+                <!-- ═══ DXF DRAWING ═══ -->
+                <section id="dxf-drawing">
+                    <h2 class="section-title">DXF Drawing</h2>
+    
+                    <h3>Layer Structure</h3>
+                    <p>The exported DXF assigns each geometry type to its own named layer. Default visibility settings are:</p>
+                    <ul>
+                        <li><strong>CENTERLINE</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
+                        <li><strong>FLANGE</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
+                        <li><strong>FLANGE_INSULATION</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
+                        <li><strong>PIPE</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
+                        <li><strong>PIPE_INSULATION</strong> <i>(visibility set to <b style="color: #e67e22;">OFF</b>)</i></li>
+                        <li><strong>TEXT</strong> <i>(visibility set to <b style="color: #1a6faa;">ON</b>)</i></li>
+                    </ul>
+    
+                    <h3>Layer Visibility and Verification</h3>
+                    <p>With default layers on, the drawing shows a clean section view of the arrangement <i>(Fig. 1)</i>. Turning on the hidden layers reveals the full flange and insulation profiles <i>(Fig. 2)</i>, which can be used to verify that the specified gap is maintained between adjacent components <i>(Fig. 3 &amp; 4)</i>.</p>
+    
+                    <div>
+                        <figure>
+                            <img src="img/default-pipe-geom_550x550.png" alt="pipe drawing with default layers on" width="275" height="275">
+                            <figcaption>Fig.1 Default layers — section view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/full-pipe-geom_1000x550.png" alt="pipe drawing with helper layers on" width="500" height="275">
+                            <figcaption>Fig.2 All layers on — full geometry visible</figcaption>
+                        </figure>
+                    </div>
+    
+                    <div>
+                        <figure>
+                            <img src="img/default-layers_1000x700.png" alt="pipe drawing with default layers on" width="500" height="350">
+                            <figcaption>Fig.3 Arrangement with C2C distance labelled</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/helper-layers_1000x700.png" alt="pipe drawing with helper layers on" width="500" height="350">
+                            <figcaption>Fig.4 Helper layers on — gap verification</figcaption>
+                        </figure>
+                    </div>
+    
+                    <div class="intro-description">
+                        <p><strong style="color: #e67e22;">NOTICE:</strong> Enabling the hidden helper layers will often result in a visual overlap of flange profiles on adjacent pipelines. This is expected — the staggered flange setup means those flanges are on different planes along the Z-axis and do not actually clash.</p>
+                    </div>
+                </section>
+    
+                <!-- ═══ ABBREVIATIONS ═══ -->
+                <section id="abbreviations">
+                    <h2 class="section-title">Abbreviations</h2>
+                    <ul>
+                        <li><strong>NPS:</strong> Nominal Pipe Size</li>
+                        <li><strong>OD:</strong> Outside Diameter</li>
+                        <li><strong>Insul:</strong> Insulation thickness</li>
+                        <li><strong>Flg:</strong> Flange</li>
+                        <li><strong>BOP:</strong> Bottom of Pipe</li>
+                        <li><strong>Rad:</strong> Radius</li>
+                        <li><strong>C2C:</strong> Center to Center distance, in mm</li>
+                    </ul>
+                </section>
+            </div>
             <footer>
                 <div class="footer-text-block footer-border-top">
                     <strong>Disclaimer:</strong> This tool is provided for informational and
@@ -197,12 +198,29 @@
         </aside> -->
     </div>
     <script>
-    document.getElementById('navBurger').addEventListener('click', function() {
-        var menu = document.getElementById('navMenu');
-        var open = menu.classList.toggle('open');
-        this.setAttribute('aria-expanded', open);
-        this.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-    </script>    
+        (function() {
+            var burger  = document.getElementById('navBurger');
+            var menu    = document.getElementById('navMenu');
+            var overlay = document.getElementById('navOverlay');
+    
+            function openMenu() {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                burger.setAttribute('aria-expanded', 'true');
+                burger.innerHTML = '&#10005;';
+            }
+            function closeMenu() {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.innerHTML = '&#9776;';
+            }
+    
+            burger.addEventListener('click', function() {
+                menu.classList.contains('open') ? closeMenu() : openMenu();
+            });
+            overlay.addEventListener('click', closeMenu);
+        })();
+    </script>   
 </body>
 </html>
