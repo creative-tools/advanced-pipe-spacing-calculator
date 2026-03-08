@@ -23,16 +23,9 @@
                     <h1>Advanced Pipe Spacing Calculator</h1>
                     <p class="sub-title">for Piping Engineers</p>
                 </div>
-            <nav>
-                <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
-                    &#9776;
-                </button>
-                <div class="nav-menu" id="navMenu">
-                    <!-- index.html -->
+                <nav>
                     <a href="help.html" class="header-nav">Help</a>
-                    <a href="about.html" class="header-nav">About</a>
-                </div>
-            </nav>
+                </nav>
             </header>
 
             <img src="img/piping-arrangement.webp" alt="Piping arrangement" width="600" height="293">
@@ -85,7 +78,9 @@
                     The author shall not be liable for any damages resulting from the use of this tool.
                 </div>
                 <div class="site-footer-bar">
-                    &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a>
+                    &copy; 2026 Advanced Pipe Spacing Calculator &nbsp;|&nbsp;
+                    <a href="help.html">Help</a> &nbsp;|&nbsp;
+                    <a href="privacy.html">Privacy Policy</a>
                 </div>
             </footer>
 
@@ -105,13 +100,5 @@
             </div>
         </aside> -->
     </div>
-    <script>
-    document.getElementById('navBurger').addEventListener('click', function() {
-        var menu = document.getElementById('navMenu');
-        var open = menu.classList.toggle('open');
-        this.setAttribute('aria-expanded', open);
-        this.innerHTML = open ? '&#10005;' : '&#9776;';
-    });
-    </script>
 </body>
 </html>
