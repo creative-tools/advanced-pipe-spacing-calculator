@@ -1,21 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1040" height="1040"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1040" height="1040"><svg width="1040" height="1040" viewBox="0 0 1040 1040" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 520,520 
-           A 256,256 0 0 1 520,8 
-           A 512,512 0 0 1 520,1032 
-           A 256,256 0 0 0 520,520" fill="blue" stroke="none"></path>
-
-  <path d="M 520,520 
-           A 256,256 0 0 1 520,8 
-           A 512,512 0 0 0 520,1032 
-           A 256,256 0 0 0 520,520" fill="white" stroke="none"></path>
-
-  <circle cx="520" cy="520" r="512" fill="none" stroke="blue" stroke-width="12"></circle>
-  
-  <line x1="8" y1="520" x2="1032" y2="520" stroke="red" stroke-width="12"></line>
-  <line x1="520" y1="8" x2="520" y2="1032" stroke="red" stroke-width="12"></line>
-
-  <path d="M 520,520 A 256,256 0 0 1 520,8" fill="none" stroke="blue" stroke-width="1"></path>
-  <path d="M 520,520 A 256,256 0 0 1 520,1032" fill="none" stroke="blue" stroke-width="1"></path>
-</svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
-@media (prefers-color-scheme: dark) { :root { filter: none; } }
-</style></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><defs>
+    <style>
+      .bg        { fill: #1a6fa8; }
+      .pipe-stroke { stroke: #ffffff; }
+      .dim-line  { stroke: #ffffff; }
+      .dim-arrow { fill: #ffffff; }
+      @media (prefers-color-scheme: dark) {
+        .bg        { fill: #2a85c8; }
+        .pipe-stroke { stroke: #ffffff; }
+        .dim-line  { stroke: #ffffff; }
+        .dim-arrow { fill: #ffffff; }
+      }
+    </style>
+  </defs><rect width="64" height="64" rx="12" ry="12" class="bg"></rect><circle cx="22" cy="36" r="13" fill="none" class="pipe-stroke" stroke-width="2"></circle><circle cx="22" cy="36" r="11" fill="none" class="pipe-stroke" stroke-width="1"></circle><line x1="22" y1="23.5" x2="22" y2="48.5" class="dim-line" stroke-width="0.8" stroke-dasharray="2.5 1.5" stroke-linecap="round" opacity="0.85"></line><line x1="9.5" y1="36" x2="34.5" y2="36" class="dim-line" stroke-width="0.8" stroke-dasharray="2.5 1.5" stroke-linecap="round" opacity="0.85"></line><circle cx="47" cy="40" r="9" fill="none" class="pipe-stroke" stroke-width="2"></circle><circle cx="47" cy="40" r="7.5" fill="none" class="pipe-stroke" stroke-width="1"></circle><line x1="47" y1="31.5" x2="47" y2="48.5" class="dim-line" stroke-width="0.8" stroke-dasharray="2.5 1.5" stroke-linecap="round" opacity="0.85"></line><line x1="38.5" y1="40" x2="55.5" y2="40" class="dim-line" stroke-width="0.8" stroke-dasharray="2.5 1.5" stroke-linecap="round" opacity="0.85"></line><line x1="22" y1="11" x2="47" y2="11" class="dim-line" stroke-width="1.5" stroke-linecap="round"></line><line x1="22" y1="8" x2="22" y2="14" class="dim-line" stroke-width="1.5" stroke-linecap="round"></line><line x1="47" y1="8" x2="47" y2="14" class="dim-line" stroke-width="1.5" stroke-linecap="round"></line><circle cx="34.5" cy="11" r="1.5" class="dim-arrow"></circle><line x1="22" y1="14" x2="22" y2="23" class="dim-line" stroke-width="1" stroke-dasharray="2 2" stroke-linecap="round" opacity="0.7"></line><line x1="47" y1="14" x2="47" y2="31" class="dim-line" stroke-width="1" stroke-dasharray="2 2" stroke-linecap="round" opacity="0.7"></line></svg>
